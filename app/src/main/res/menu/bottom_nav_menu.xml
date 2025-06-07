@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homePageFragmentFragment"
+        android:title="HomePage"/>
+    <item
+        android:id="@+id/viewTransactionsFragment"
+        android:title="Transactions"/>
+    <item
+        android:id="@+id/AddTransaction"
+        android:title="Add"/>
+    <item
+        android:id="@+id/rewardsFragment"
+        android:title="Insights"/>
+    <item
+        android:id="@+id/userProfileFragment"
+        android:title="Settings"/>
+</menu>

@@ -1,12 +1,7 @@
+# Android Studio specific
 *.iml
 .gradle
 /local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
 .DS_Store
 /build
 /captures
@@ -14,6 +9,16 @@
 .cxx
 local.properties
 
-# Project exclude paths
-/app/
-/gradle/
+# IntelliJ / Android Studio project files
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+
+# Ignore only the build folder inside app, not the whole app
+/app/build/
+/app/.cxx/
+/app/intermediates/
+/app/generated/

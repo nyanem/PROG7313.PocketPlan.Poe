@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">PocketPlan</string>
+    <string name="getStarted_txt">Get Started</string>
+    <string name="name">Name</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

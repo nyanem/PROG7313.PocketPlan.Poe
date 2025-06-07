@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2B326A"
+    tools:context=".LandingPageFragment">
+
+    <LinearLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="54dp" />
+
+        <ImageView
+            android:id="@+id/pp_logo"
+            android:layout_width="89dp"
+            android:layout_height="76dp"
+            android:layout_gravity="start"
+            app:srcCompat="@drawable/pp_logo" />
+
+        <TextView
+            android:id="@+id/register_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Register"
+            android:textColor="#AAB6E0"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <!-- Name -->
+        <TextView
+            android:id="@+id/name_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Name"
+            android:textColor="#AAB6E0"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/name_txtbox"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Name"
+            android:padding="14dp"
+            android:textColor="#000"
+            android:textColorHint="#6E79BA" />
+
+        <Space android:layout_width="match_parent" android:layout_height="20dp" />
+
+        <!-- Surname -->
+        <TextView
+            android:id="@+id/surname_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Surname"
+            android:textColor="#AAB6E0"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/surname_txtbox"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Surname"
+            android:padding="14dp"
+            android:textColor="#000"
+            android:textColorHint="#6E79BA" />
+
+        <Space android:layout_width="match_parent" android:layout_height="20dp" />
+
+        <!-- Number -->
+        <TextView
+            android:id="@+id/mobile_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Mobile Number"
+            android:textColor="#AAB6E0"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/number_txtbox"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Number"
+            android:padding="14dp"
+            android:textColor="#000"
+            android:textColorHint="#6E79BA" />
+
+        <!-- Email -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:id="@+id/email_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Email"
+            android:textColor="#AAB6E0"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/email_txtbox"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Email"
+            android:padding="14dp"
+            android:textColor="#000"
+            android:textColorHint="#6E79BA" />
+
+        <Space android:layout_width="match_parent" android:layout_height="20dp" />
+
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/profile_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Create a Profile"
+            android:textColor="#AAB6E0"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:id="@+id/username_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Create a Username"
+            android:textColor="#AAB6E0"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/usernameInput"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Username"
+            android:importantForAutofill="no"
+            android:padding="14dp"
+            android:textColor="#000"
+            android:textColorHint="#6E79BA" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:id="@+id/password_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Create a Password"
+            android:textColor="#AAB6E0"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/passwordInput"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Password"
+            android:padding="14dp"
+            android:textColor="#000"
+            android:textColorHint="#6E79BA" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:id="@+id/confirmPassword_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Confirm Password"
+            android:textColor="#AAB6E0"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/confirmPassword_txtbox"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Confirm Password"
+            android:padding="14dp"
+            android:textColor="#000"
+            android:textColorHint="#6E79BA" />
+
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <!-- Create A Profile Button -->
+        <Button
+            android:id="@+id/profileButton"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#8695DC"
+            android:fontFamily="@font/montserrat_semibold"
+            android:padding="14dp"
+            android:text="Register"
+            android:textAllCaps="false"
+            android:textColor="#DBD4D7" />
+
+
+        <Space android:layout_width="match_parent" android:layout_height="40dp" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,7 @@
+<!-- res/font/montserrat_semibold_family.xml -->
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="600"
+        android:font="@font/montserrat_semibold" />
+</font-family>

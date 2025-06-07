@@ -1,0 +1,5 @@
+<!-- res/drawable/menu_item_bg.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#7886C7" /> <!-- A shade of blue, change as needed -->
+    <corners android:radius="12dp" />
+</shape>
