@@ -9,7 +9,7 @@
         android:id="@+id/landingPageFragment"
         android:name="com.example.prog7313pocketplanpoe.LandingPageFragment"
         android:label="Landing Page"
-        tools:layout="@layout/fragment_landing_page">
+        tools:layout="@layout/fragment_landing_page"/>
     <action
         android:id="@+id/action_landingFragment_to_loginFragment"
         app:destination="@id/loginFragment" />
@@ -31,7 +31,7 @@
         android:id="@+id/loginFragment"
         android:name="com.example.prog7313pocketplanpoe.LoginFragment"
         android:label="Login"
-        tools:layout="@layout/fragment_login">
+        tools:layout="@layout/fragment_login"/>
     <action
         android:id="@+id/action_loginFragment_to_homePageFragment"
         app:destination="@id/homePageFragment" />

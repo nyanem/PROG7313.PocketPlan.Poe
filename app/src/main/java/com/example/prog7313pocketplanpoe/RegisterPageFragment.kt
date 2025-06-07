@@ -1,4 +1,4 @@
-package PROG7313.PocketPlan.Poe
+package com.example.prog7313pocketplanpoe
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -25,7 +25,7 @@ class RegisterPageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_register, container, false)
+        return inflater.inflate(R.layout.fragment_register_page, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -67,7 +67,7 @@ class RegisterPageFragment : Fragment() {
             Toast.makeText(requireContext(), "Registration successful", Toast.LENGTH_SHORT).show()
 
             // Navigate to login screen
-            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+            findNavController().navigate(R.id.action_registerpageFragment_to_loginFragment)
         }
     }
 }

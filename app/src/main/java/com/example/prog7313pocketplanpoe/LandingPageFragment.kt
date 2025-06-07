@@ -31,7 +31,7 @@ class LandingPageFragment : Fragment() {
         }
 
         registerButton.setOnClickListener {
-            findNavController().navigate(R.id.action_landingFragment_to_registerFragment)
+            findNavController().navigate(R.id.action_landingFragment_to_registerpageFragment)
         }
     }
 }
