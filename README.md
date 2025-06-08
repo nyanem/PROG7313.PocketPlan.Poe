@@ -17,33 +17,74 @@ PocketPlan is straightforward, easy-to-use Android budgeting app that helps peop
 - 💱 Currency Support
 
 ## Video Demonstration Link 
-https://youtu.be/ROwj-LSHFOk?si=2TdVdpjVHRAesWZL 
 
-## 🚀 Tech Stack 
 
+## 🔧 Tech Stack 
 - Kotlin (Main Language)
 - Android SDK
 - Room Database
 - XML Layouts
+- Firebase
+
+## 🎬 How to Run and Use the App
+1. Clone the Repository
+  - git clone https://github.com/your-username/your-repo-name.git
+2. Open in Android Studio
+  - File → Open → Select the project folder
+  - Let Gradle sync automatically
+3. Build and Run
+  - Choose an emulator or connect your Android device
+  - Click the green "Run" ▶️ button
+
+## 📲 Using the App
+Once the app is installed and running:
+
+1. Register and Create Profile
+- On the first launch, register a new user.
+- Set up your user profile with personal info and preferred settings.
+
+2. Manage Categories
+- Use CategoryFragment to add, rename, or remove expense categories.
+
+3. Track Goals
+- Head to GoalsFragment to set savings or budget goals.
+- Monitor your progress visually.
+
+4. Add Transactions
+- Navigate to the "Add Transaction" page.
+- Enter amount, select a category, choose a date, and optionally upload a receipt.
+- Tap Save to store the transaction.
+
+5. View Reports
+- Go to the Reports section.
+- Visual charts display your total spending and total savings.
+
+6. Earn Rewards
+- Check RewardsFragment to see points or achievements unlocked by reaching goals or saving money.
+
+7. Access Tips and Help
+- Visit the Tips and Help pages for financial guidance and app usage tips.
+
+8. Change Language or Currency
+- Use the Language/Currency settings to switch between supported languages and currencies — no need to change device settings.
 
 ## 📁 Project Structure 
-
-- MainActivity.kt: Entry point of the app
-- UserProfile.kt: User profile screen with options
-- Help.kt, Tips.kt: Static content/help pages
-- Expense.kt: Model class for expenses
-- .kt: Room database configuration
-- CategoryActivity.kt: Manages expense categories
-- CreateUserProfile.kt: Screen to create or update a user profile
-- GoalsActivity.kt: Goal setting and progress monitoring
-- LandingPage.kt: Landing screen after login/registration
-- RegisterActivity.kt: User sign-up screen
-- User.kt: Model class for user details
-- UserDatabase.kt: Database configuration for storing user profiles
-- activity_*.xml: UI layout files
-- ReportsActivity.kt: Displays financial reports such as total spending and savings using a bar chart. Helps users visualize their financial habits.
-- RewardsActivity.kt: Provides a reward-based system where users earn achievements or points for meeting goals.
-- Language.kt: A settings option to switch between supported languages and currencies without the need to change device settings.
+- MainActivity.kt: Entry point of the app that hosts the NavHostFragment and manages navigation.
+- UserProfileFragment.kt: Fragment that displays user profile details with options to edit preferences.
+- HelpFragment.kt, TipsFragment.kt: Static content fragments for help and usage tips.
+- Expense.kt: Model class representing individual expense transactions.
+- AppDatabase.kt: Room database configuration for storing expenses and user data.
+- CategoryFragment.kt: Fragment to manage and customize expense categories.
+- CreateUserProfileFragment.kt: Fragment to create or update a user profile during onboarding or in settings.
+- GoalsFragment.kt: Fragment for setting financial goals and tracking progress visually.
+- LandingFragment.kt: Initial landing screen shown post-login or registration; acts as the user dashboard.
+- RegisterFragment.kt: Fragment to handle new user registration with input validation.
+- User.kt: Data class containing user details such as name, email, and preferences.
+- UserDatabase.kt: Room database configuration specifically for user profiles.
+- fragment_*.xml: UI layout files corresponding to each fragment screen.
+- ReportsFragment.kt: Displays financial summaries and visual charts like bar/line graphs to analyze expenses.
+- RewardsFragment.kt: Shows points or badges earned by achieving goals, encouraging consistent saving habits.
+- LanguageFragment.kt: Allows users to change the app’s language and currency without adjusting device-wide settings.
 
 ## 🔥 Firebase Database
 ![Screenshot4-categoryGoals](https://github.com/user-attachments/assets/728519cc-d57f-4931-a887-cb08b87c4b0b)
