@@ -38,12 +38,7 @@
             android:layout_height="1dp"
             android:layout_weight="1" />
 
-        <ImageView
-            android:id="@+id/icon"
-            android:layout_width="60dp"
-            android:layout_height="64dp"
-            android:contentDescription="User Icon"
-            android:src="@drawable/usericon" />
+
     </LinearLayout>
     <!-- Upload a picture! -->
 
@@ -77,6 +72,10 @@
             android:contentDescription="Receipt Preview"
             android:padding="8dp"
             android:scaleType="centerCrop" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="25dp" />
 
         <Button
             android:id="@+id/uploadButton"

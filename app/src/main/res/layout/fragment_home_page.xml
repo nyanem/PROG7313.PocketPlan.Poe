@@ -54,18 +54,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/addTransaction"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|center_horizontal"
-                android:layout_marginStart="60dp"
-                android:layout_marginEnd="50dp"
-                android:background="@drawable/rounded_button"
-                android:contentDescription="Add Transaction"
-                android:src="@drawable/ic_add" />
+            <!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+            <!--                android:id="@+id/addTransaction"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="center|center_horizontal"-->
+            <!--                android:layout_marginStart="60dp"-->
+            <!--                android:layout_marginEnd="50dp"-->
+            <!--                android:background="@drawable/rounded_button"-->
+            <!--                android:contentDescription="Add Transaction"-->
+            <!--                android:src="@drawable/ic_add" />-->
 
             <Button
                 android:id="@+id/filterButton"
@@ -94,7 +94,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp" />
+                android:padding="16dp" >
+
+<!--                <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--                    android:id="@+id/bottom_nav"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="bottom"-->
+<!--                    android:background="?android:attr/windowBackground"-->
+<!--                    app:labelVisibilityMode="labeled"-->
+<!--                    app:menu="@menu/bottom_nav_menu" />-->
+            </LinearLayout>
 
 
         </ScrollView>
@@ -108,15 +118,14 @@
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentBottom="true"
-        android:background="#2B2C6D"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        app:menu="@menu/bottom_nav_menu" />
-
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/bottomNav"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:background="#2B2C6D"-->
+<!--        app:itemIconTint="@color/white"-->
+<!--        app:itemTextColor="@color/white"-->
+<!--        app:menu="@menu/bottom_nav_menu" />-->
 
 </RelativeLayout>
