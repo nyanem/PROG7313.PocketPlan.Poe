@@ -52,7 +52,11 @@ https://youtu.be/ROwj-LSHFOk?si=2TdVdpjVHRAesWZL
 ![Screenshot1-userData](https://github.com/user-attachments/assets/1d584d89-cd1c-4af8-9884-2135440749c2)
 
 ## 🔄 Changes from part 2
-
+- The predefined/custom category options are showing now when adding a transaction
+- Viewing the list of entries in a period was implemented
+- Viewing the category totals in a period was fixed, and is now working
+- All activities now include navigation
+- The images are being stored to the database now
 
 ## 👩🏽‍🤝‍👩🏻 Contributors 
 - Aman Adams (ST10290748)
