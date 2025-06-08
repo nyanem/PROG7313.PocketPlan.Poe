@@ -2,58 +2,66 @@ package com.example.prog7313pocketplanpoe
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [CategoryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CategoryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    class CategoryFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+        private lateinit var customCategoryEditText: EditText
+        private lateinit var addCustomCategoryButton: Button
+        private lateinit var selectButton: Button
+
+        private lateinit var groceriesButton: Button
+        private lateinit var rentButton: Button
+        private lateinit var petrolButton: Button
+        private lateinit var billsButton: Button
+        private lateinit var homeButton: Button
+        private lateinit var vacationButton: Button
+
+        override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View? {
+            val view = inflater.inflate(R.layout.fragment_category, container, false)
+
+            // Bind Views
+            groceriesButton = view.findViewById(R.id.Groceries)
+            rentButton = view.findViewById(R.id.Rent)
+            petrolButton = view.findViewById(R.id.Petrol)
+            billsButton = view.findViewById(R.id.Bills)
+            homeButton = view.findViewById(R.id.Home)
+            vacationButton = view.findViewById(R.id.Vacation)
+
+            customCategoryEditText = view.findViewById(R.id.editTextCustomCategory)
+            addCustomCategoryButton = view.findViewById(R.id.btnAddCategory)
+            selectButton = view.findViewById(R.id.selectCategoriesButton)
+
+            // Add custom category logic
+            addCustomCategoryButton.setOnClickListener {
+                val customText = customCategoryEditText.text.toString().trim()
+                if (customText.isNotEmpty()) {
+                    // You can add this dynamically to a list or database
+                    Toast.makeText(context, "Custom category added: $customText", Toast.LENGTH_SHORT).show()
+                    customCategoryEditText.text.clear()
+                }
+            }
+
+            // Example: handle select click
+            selectButton.setOnClickListener {
+                // Save selected categories
+                Toast.makeText(context, "Categories selected!", Toast.LENGTH_SHORT).show()
+                // Navigate to next screen or save to DB
+            }
+
+            return view
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_category, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CategoryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CategoryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/landingPageFragment">
+    app:startDestination="@id/homePageFragment">
 
     <fragment
         android:id="@+id/landingPageFragment"
@@ -52,6 +52,9 @@
         android:id="@+id/AddTransaction"
         android:name="com.example.prog7313pocketplanpoe.AddTransactionFragment"
         android:label="Budget" />
+    <action
+        android:id="@+id/action_AddtransactionFragment_to_addReceiptFragment"
+        app:destination="@id/addReceiptFragment" />
     <fragment
         android:id="@+id/categoryFragment"
         android:name="com.example.prog7313pocketplanpoe.CategoryFragment"

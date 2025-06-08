@@ -1,59 +1,87 @@
 package com.example.prog7313pocketplanpoe
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.Spinner
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import java.util.Calendar
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AddTransactionFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AddTransactionFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var amountEditText: EditText
+    private lateinit var categorySpinner: Spinner
+    private lateinit var dateEditText: EditText
+    private lateinit var balanceEditText: EditText
+    private lateinit var uploadButton: ImageButton
+    private lateinit var saveButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_transaction, container, false)
+        val view = inflater.inflate(R.layout.fragment_add_transaction, container, false)
+
+        amountEditText = view.findViewById(R.id.amountedittext)
+        categorySpinner = view.findViewById(R.id.categoryspinner)
+        dateEditText = view.findViewById(R.id.dateedittext)
+        balanceEditText = view.findViewById(R.id.balanceedittext)
+        uploadButton = view.findViewById(R.id.uploadButton)
+        saveButton = view.findViewById(R.id.saveutton)
+
+        setupCategorySpinner()
+        setupDatePicker()
+
+        saveButton.setOnClickListener {
+            val amount = amountEditText.text.toString()
+            val category = categorySpinner.selectedItem.toString()
+            val date = dateEditText.text.toString()
+
+            Toast.makeText(requireContext(), "Saved: $amount - $category on $date", Toast.LENGTH_SHORT).show()
+            // TODO: Save logic here
+        }
+
+        uploadButton = view.findViewById(R.id.uploadButton)
+        uploadButton.setOnClickListener {
+            findNavController().navigate(R.id.action_AddtransactionFragment_to_addReceiptFragment)
+        }
+
+
+        // Example balance load
+        balanceEditText.setText("R1200.00") // You can set this dynamically later
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AddTransactionFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AddTransactionFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun setupCategorySpinner() {
+        val categories = listOf("Food", "Transport", "Entertainment", "Bills", "Other")
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categories)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        categorySpinner.adapter = adapter
+    }
+
+    private fun setupDatePicker() {
+        dateEditText.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val datePicker = DatePickerDialog(requireContext(),
+                { _, year, month, dayOfMonth ->
+                    val selectedDate = "$dayOfMonth/${month + 1}/$year"
+                    dateEditText.setText(selectedDate)
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            )
+            datePicker.show()
+        }
     }
 }
+

@@ -1,59 +1,43 @@
 package com.example.prog7313pocketplanpoe
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SurveyFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SurveyFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var incomeEditText: EditText
+    private lateinit var maxSavingsEditText: EditText
+    private lateinit var minSavingsEditText: EditText
+    private lateinit var saveSurveyButton: Button
+    private lateinit var bottomNav: BottomNavigationView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_survey, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_survey, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SurveyFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SurveyFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        incomeEditText = view.findViewById(R.id.income_txtbox)
+        maxSavingsEditText = view.findViewById(R.id.maxsavings_txtbox)
+        minSavingsEditText = view.findViewById(R.id.minsavings_txtbox)
+        saveSurveyButton = view.findViewById(R.id.saveSurveyButton)
+        bottomNav = view.findViewById(R.id.bottomNav)
+
+        saveSurveyButton.setOnClickListener {
+            val income = incomeEditText.text.toString()
+            val maxSavings = maxSavingsEditText.text.toString()
+            val minSavings = minSavingsEditText.text.toString()
+
+            // TODO: Save these values locally or send to ViewModel / Database
+        }
+
+        return view
     }
 }

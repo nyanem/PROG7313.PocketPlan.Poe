@@ -63,6 +63,9 @@ dependencies {
     implementation ("androidx.navigation:navigation-ui-ktx:2.7.7")
     implementation("com.google.android.material:material:1.11.0")
 
+
+
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -76,6 +79,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //Reports page setup
+    implementation ("com.github.lecho:hellocharts-library:1.5.8@aar")
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
     // Room
     implementation("androidx.room:room-runtime:2.6.1")

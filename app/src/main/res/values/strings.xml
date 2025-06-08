@@ -3,4 +3,9 @@
     <string name="getStarted_txt">Get Started</string>
     <string name="name">Name</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="time_period_options">
+        <item>Last 7 days</item>
+        <item>This Month</item>
+        <item>Last Month</item>
+    </string-array>
 </resources>

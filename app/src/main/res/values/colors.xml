@@ -6,5 +6,6 @@
     <color name="blue2">#1976D2</color>
     <color name="blue3">#0D47A1</color>
     <color name="creme">#FFFDE7</color> <!-- Light cream shade -->
+    <color name="teal_700">#018786</color>
 
 </resources>
