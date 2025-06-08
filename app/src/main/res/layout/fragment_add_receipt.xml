@@ -13,11 +13,13 @@
 
     <!-- Profile Image and Name -->
 
+    <!-- Upload a picture! -->
+
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="48dp"
         android:background="#2D336B"
         android:orientation="horizontal"
         android:padding="16dp"
@@ -45,13 +47,12 @@
             android:contentDescription="User Icon"
             android:src="@drawable/usericon" />
     </LinearLayout>
-    <!-- Upload a picture! -->
 
     <LinearLayout
         android:id="@+id/cameraLayout"
         android:layout_width="414dp"
         android:layout_height="370dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="76dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,8 +62,8 @@
 
         <Button
             android:id="@+id/btnOpenCamera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="155dp"
+            android:layout_height="68dp"
             android:layout_marginBottom="12dp"
             android:backgroundTint="#A9B5DF"
             android:fontFamily="@font/montserrat"
@@ -80,8 +81,8 @@
 
         <Button
             android:id="@+id/uploadButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="176dp"
+            android:layout_height="65dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/round_button"
             android:fontFamily="@font/montserrat"
@@ -89,41 +90,5 @@
             android:textColor="#FFFFFF" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/bottomButtons"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="24dp"
-        android:gravity="center_vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <ImageButton
-            android:id="@+id/backButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@android:color/transparent"
-            android:src="?attr/homeAsUpIndicator"
-            app:tint="#FAF9F9" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/logoutButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#A9B5DF"
-            android:text="Log Out"
-            android:textColor="#000000"
-            android:fontFamily="@font/montserrat"
-            android:background="@drawable/round_button"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp" />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

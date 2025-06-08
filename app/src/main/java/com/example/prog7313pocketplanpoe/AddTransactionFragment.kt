@@ -44,9 +44,9 @@ class AddTransactionFragment : Fragment() {
             val amount = amountEditText.text.toString()
             val category = categorySpinner.selectedItem.toString()
             val date = dateEditText.text.toString()
+            saveTransactionToFile(amount, category, date)
 
             Toast.makeText(requireContext(), "Saved: $amount - $category on $date", Toast.LENGTH_SHORT).show()
-            // TODO: Save logic here
         }
 
         uploadButton = view.findViewById(R.id.uploadButton)
@@ -81,6 +81,13 @@ class AddTransactionFragment : Fragment() {
                 calendar.get(Calendar.DAY_OF_MONTH)
             )
             datePicker.show()
+        }
+    }
+
+    private fun saveTransactionToFile(amount: String, category: String, date: String) {
+        val transaction = "$amount - $category on $date\n"
+        requireContext().openFileOutput("transactions.txt", android.content.Context.MODE_APPEND).use {
+            it.write(transaction.toByteArray())
         }
     }
 }
