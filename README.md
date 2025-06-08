@@ -90,6 +90,7 @@ Once the app is installed and running:
 ![Screenshot4-categoryGoals](https://github.com/user-attachments/assets/728519cc-d57f-4931-a887-cb08b87c4b0b)
 ![Screenshot3-selectedCategories](https://github.com/user-attachments/assets/05334a5c-9ac5-43e0-8825-e330ce1f7aff)
 ![Screenshot2-surveyData](https://github.com/user-attachments/assets/8f582f08-2b20-4515-bb41-bea545eee47a)
+![Image 2025-06-08 at 21 36](https://github.com/user-attachments/assets/e77ee5da-ea9c-4d84-a1c2-8149c9b35cca)
 ![Screenshot1-userData](https://github.com/user-attachments/assets/1d584d89-cd1c-4af8-9884-2135440749c2)
 
 ## 🔄 Changes from part 2
