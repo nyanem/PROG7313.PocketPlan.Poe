@@ -1,4 +1,4 @@
-package com.example.pocketplan
+package com.example.prog7313pocketplanpoe
 
 import android.content.ContentValues
 import android.content.Context
@@ -10,7 +10,7 @@ class UserDatabaseHelper(context: Context) :
 
     companion object {
         private const val DATABASE_NAME = "PocketPlan.db"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 5
         private const val TABLE_NAME = "users"
         private const val COLUMN_ID = "id"
         private const val COLUMN_USERNAME = "username"
