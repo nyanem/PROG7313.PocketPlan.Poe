@@ -28,7 +28,7 @@ PocketPlan is straightforward, easy-to-use Android budgeting app that helps peop
 
 ## 🎬 How to Run and Use the App
 1. Clone the Repository
-  - git clone https://github.com/your-username/your-repo-name.git
+  - git clone https://github.com/nyanem/PROG7313.PocketPlan.Poe.git
 2. Open in Android Studio
   - File → Open → Select the project folder
   - Let Gradle sync automatically
