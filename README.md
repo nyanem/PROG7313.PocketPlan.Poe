@@ -2,30 +2,6 @@
 
 PocketPlan is straightforward, easy-to-use Android budgeting app that helps people track their savings, manage their spending, and develop better money management practices. An academic project led to the development of the app, which uses goal tracking, spending insights, and an interactive design to promote financial awareness.
 
-## 🚀Features
-- 📋 User Registration & Login
-- 🧾 Add Expenses – with amount, date and category
-- 📷 Attach Receipts (optional image upload)
-- 📈 Expense Categories (e.g Groceries, Transport)
-- 📊 Monthly Budget Goal and Category - Specific Limits
-- 💸 Dashboard ( showing daily spending and progress against goals ) 
-- 📈 Daily Spending and Saving Graph (in progress)
-- 🏆 Gamification & Rewards (planned)
-- 🌐 Database Sync
-- ❔ Tips, Tricks and FAQ'S
-- 🗣️ Multi-language Support
-- 💱 Currency Support
-
-## Video Demonstration Link 
-
-
-## 🔧 Tech Stack 
-- Kotlin (Main Language)
-- Android SDK
-- Room Database
-- XML Layouts
-- Firebase
-
 ## 🎬 How to Run and Use the App
 1. Clone the Repository
   - git clone https://github.com/nyanem/PROG7313.PocketPlan.Poe.git
@@ -67,6 +43,30 @@ Once the app is installed and running:
 
 8. Change Language or Currency
 - Use the Language/Currency settings to switch between supported languages and currencies — no need to change device settings.
+  
+## 🚀Features
+- 📋 User Registration & Login
+- 🧾 Add Expenses – with amount, date and category
+- 📷 Attach Receipts (optional image upload)
+- 📈 Expense Categories (e.g Groceries, Transport)
+- 📊 Monthly Budget Goal and Category - Specific Limits
+- 💸 Dashboard ( showing daily spending and progress against goals ) 
+- 📈 Daily Spending and Saving Graph (in progress)
+- 🏆 Gamification & Rewards (planned)
+- 🌐 Database Sync
+- ❔ Tips and Tricks 
+- 🗣️ Multi-language Support
+- 💱 Currency Support
+
+## Video Demonstration Link 
+
+
+## 🔧 Tech Stack 
+- Kotlin (Main Language)
+- Android SDK
+- Room Database
+- XML Layouts
+- Firebase
 
 ## 📁 Project Structure 
 - MainActivity.kt: Entry point of the app that hosts the NavHostFragment and manages navigation.
@@ -95,10 +95,18 @@ Once the app is installed and running:
 
 ## 🔄 Changes from part 2
 - The predefined/custom category options are showing now when adding a transaction
-- Viewing the list of entries in a period was implemented
 - Viewing the category totals in a period was fixed, and is now working
 - All activities now include navigation
 - The images are being stored to the database now
+- Navigation bar is now fully functional
+
+## ✨ Differences in the UI from Part 1 Planning
+- Rewards button was in the transactions/expenses page, is now in the reports page
+- Navigation bar was updated
+- Create profile page is now on the same page as the registration page
+- User profile page has now become the settings page
+- Banking profile page was removed
+- Language and Help buttons on first few pages, was not implemented
 
 ## 👩🏽‍🤝‍👩🏻 Contributors 
 - Aman Adams (ST10290748)
