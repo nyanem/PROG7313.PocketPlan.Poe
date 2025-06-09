@@ -55,6 +55,7 @@ android {
         }
     }
 }
+val camerax_version = "1.4.2"
 
 dependencies {
 
@@ -86,4 +87,15 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-firestore-ktx:24.10.1")
     implementation("com.google.firebase:firebase-database:21.0.0")
+    implementation("com.google.firebase:firebase-storage-ktx")
+
+
+
+    implementation("androidx.camera:camera-camera2:${camerax_version}")
+    implementation("androidx.camera:camera-lifecycle:${camerax_version}")
+    implementation("androidx.camera:camera-view:${camerax_version}")
+
+
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
 }

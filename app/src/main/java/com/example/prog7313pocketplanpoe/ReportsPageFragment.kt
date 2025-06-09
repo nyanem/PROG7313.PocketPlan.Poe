@@ -1,3 +1,86 @@
+package com.example.prog7313pocketplanpoe
+
+import android.graphics.Color
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
+import com.example.prog7313pocketplanpoe.R
+import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+
+class ReportsPageFragment : Fragment() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_reports_page, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Set padding for system bars
+        ViewCompat.setOnApplyWindowInsetsListener(view.findViewById(R.id.graphContainer)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+        setupBarChart(view)
+    }
+
+    private fun setupBarChart(view: View) {
+        val barChart = view.findViewById<BarChart>(R.id.barChart)
+
+        val categories = listOf("Food", "Transport", "Entertainment", "Bills")
+        val spentAmounts = listOf(500f, 200f, 150f, 300f)
+        val minGoals = listOf(100f, 50f, 50f, 100f)
+        val maxGoals = listOf(600f, 300f, 250f, 400f)
+
+        val spentEntries = ArrayList<BarEntry>()
+        val minGoalEntries = ArrayList<BarEntry>()
+        val maxGoalEntries = ArrayList<BarEntry>()
+
+        for (i in categories.indices) {
+            spentEntries.add(BarEntry(i.toFloat(), spentAmounts[i]))
+            minGoalEntries.add(BarEntry(i.toFloat(), minGoals[i]))
+            maxGoalEntries.add(BarEntry(i.toFloat(), maxGoals[i]))
+        }
+
+        val spentSet = BarDataSet(spentEntries, "Spent").apply { color = Color.BLUE }
+        val minSet = BarDataSet(minGoalEntries, "Min Goal").apply { color = Color.GREEN }
+        val maxSet = BarDataSet(maxGoalEntries, "Max Goal").apply { color = Color.RED }
+
+        val data = BarData(spentSet, minSet, maxSet).apply { barWidth = 0.2f }
+        data.groupBars(0f, 0.2f, 0.05f)
+
+        barChart.data = data
+
+        val xAxis = barChart.xAxis
+        xAxis.valueFormatter = IndexAxisValueFormatter(categories)
+        xAxis.position = XAxis.XAxisPosition.BOTTOM
+        xAxis.granularity = 1f
+        xAxis.setCenterAxisLabels(true)
+        xAxis.axisMinimum = 0f
+        xAxis.axisMaximum = categories.size.toFloat()
+        xAxis.labelRotationAngle = -30f
+
+        barChart.axisRight.isEnabled = false
+        barChart.description.isEnabled = false
+        barChart.setVisibleXRangeMaximum(categories.size.toFloat())
+        barChart.invalidate()
+    }
+}
+
 //package com.example.prog7313pocketplanpoe
 //
 //import android.graphics.Color
@@ -24,7 +107,6 @@
 //        inflater: LayoutInflater, container: ViewGroup?,
 //        savedInstanceState: Bundle?
 //    ): View? {
-//        return inflater.inflate(R.layout.fragment_reports_page, container, false)
 //    }
 //
 //
