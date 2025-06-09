@@ -15,7 +15,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        val prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+        val hasCompletedSurvey = prefs.getBoolean("hasCompletedSurvey", false)
+        if (!hasCompletedSurvey) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.nav_host_fragment, SurveyFragment())
+                .commit()
+        }
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment

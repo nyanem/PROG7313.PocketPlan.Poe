@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2D336B"
+    android:background="#2B2C6D"
     tools:context=".UserProfileFragment">
 
     <!-- Top Bar -->
@@ -15,7 +15,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:background="#2D336B"
+        android:background="#2B2C6D"
         android:orientation="horizontal"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +29,7 @@
             android:layout_width="67dp"
             android:layout_height="71dp"
             android:contentDescription="Logo"
-            android:src="@drawable/logo1" />
+            android:src="@drawable/pp_logo" />
 
         <View
             android:layout_width="0dp"

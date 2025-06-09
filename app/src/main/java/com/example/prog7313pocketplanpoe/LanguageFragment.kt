@@ -1,18 +1,13 @@
 package com.example.prog7313pocketplanpoe
 
-
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-
 
 class LanguageFragment : Fragment() {
 
@@ -21,6 +16,17 @@ class LanguageFragment : Fragment() {
     private lateinit var languages: Array<String>
     private lateinit var languageCodes: Array<String>
     private lateinit var currencies: Array<String>
+
+    interface LanguageChangeListener {
+        fun onLanguageChanged()
+        fun onFragmentBackPressed()
+    }
+
+    private var languageChangeListener: LanguageChangeListener? = null
+
+    fun setLanguageChangeListener(listener: LanguageChangeListener) {
+        this.languageChangeListener = listener
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,18 +43,16 @@ class LanguageFragment : Fragment() {
         currencySpinner = view.findViewById(R.id.currencySpinner)
         val backButton = view.findViewById<ImageButton>(R.id.backButton)
 
-        // Set up back button
-        backButton.setOnClickListener {
-            findNavController().navigateUp()
-        }
-
-        // Load resources
         languages = resources.getStringArray(R.array.language_options)
         languageCodes = resources.getStringArray(R.array.language_codes)
         currencies = resources.getStringArray(R.array.currency_array)
 
         setupLanguageSpinner()
         setupCurrencySpinner()
+
+        backButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun setupLanguageSpinner() {
@@ -57,8 +61,8 @@ class LanguageFragment : Fragment() {
         languageSpinner.adapter = adapter
 
         val currentLanguage = LanguageManager.getCurrentLanguage(requireContext())
-        val position = languageCodes.indexOf(currentLanguage)
-        if (position != -1) languageSpinner.setSelection(position)
+        val currentIndex = languageCodes.indexOf(currentLanguage)
+        if (currentIndex != -1) languageSpinner.setSelection(currentIndex)
 
         languageSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
@@ -87,40 +91,45 @@ class LanguageFragment : Fragment() {
         currencySpinner.adapter = adapter
 
         val currentCurrency = CurrencyManager.getCurrentCurrency(requireContext())
-        val position = currencies.indexOf(currentCurrency)
-        if (position != -1) currencySpinner.setSelection(position)
-        else currencySpinner.setSelection(0)
+        val currentIndex = currencies.indexOf(currentCurrency)
+        currencySpinner.setSelection(if (currentIndex != -1) currentIndex else 0)
 
         currencySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-                if (pos > 0) {
-                    val selectedCurrency = currencies[pos]
-                    val savedCurrency = CurrencyManager.getCurrentCurrency(requireContext())
+                val selectedCurrency = currencies[pos]
+                val savedCurrency = CurrencyManager.getCurrentCurrency(requireContext())
 
-                    if (selectedCurrency != savedCurrency) {
-                        CurrencyManager.setCurrentCurrency(requireContext(), selectedCurrency)
-                        Toast.makeText(
-                            requireContext(),
-                            "${getString(R.string.currency_changed)} $selectedCurrency",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                if (selectedCurrency != savedCurrency) {
+                    CurrencyManager.setCurrentCurrency(requireContext(), selectedCurrency)
+                    Toast.makeText(
+                        requireContext(),
+                        "${getString(R.string.currency_changed)} $selectedCurrency",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
     }
-    private fun restartApp() {
-        val context = requireContext()
-        val launchIntent = context.packageManager.getLaunchIntentForPackage(context.packageName)
-        if (launchIntent != null) {
-            launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            startActivity(launchIntent)
-            requireActivity().finish()
-        } else {
-            android.util.Log.e("RestartApp", "Launch intent is null")
-        }
 
+    private fun restartApp() {
+        try {
+            val context = requireContext()
+            val launchIntent = context.packageManager.getLaunchIntentForPackage(context.packageName)
+            if (launchIntent != null) {
+                launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                startActivity(launchIntent)
+                requireActivity().finish()
+            } else {
+                val intent = Intent(context, LandingPageFragment::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                startActivity(intent)
+                requireActivity().finish()
+            }
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(), "Error restarting app: ${e.message}", Toast.LENGTH_SHORT).show()
+            languageChangeListener?.onLanguageChanged()
+        }
     }
 }

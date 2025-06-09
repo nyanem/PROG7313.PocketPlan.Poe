@@ -55,6 +55,13 @@
     <string name="logo_description">Logo</string>
     <string name="user_icon_description">User Icon</string>
     <string name="language_icon_description">Language Icon</string>
-
+    <!-- Rewards Activity -->
+    <string name="rewards">Rewards</string>
+    <string name="savings_goals">Savings goals</string>
+    <string name="free_coffee_reward">Free Seattle Coffee - View Code</string>
+    <string name="two_week_streak">2 Week Streak</string>    <!-- Reports Activity -->
+    <string name="reports">Reports</string>
+    <string name="total_spending_report">Total Spending Report</string>
+    <string name="total_savings_report">Total Savings Report</string>
 
 </resources>

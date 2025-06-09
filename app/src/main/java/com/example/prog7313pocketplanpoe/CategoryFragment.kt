@@ -1,67 +1,100 @@
 package com.example.prog7313pocketplanpoe
 
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
+import com.google.firebase.firestore.FirebaseFirestore
 
 class CategoryFragment : Fragment() {
-    class CategoryFragment : Fragment() {
 
-        private lateinit var customCategoryEditText: EditText
-        private lateinit var addCustomCategoryButton: Button
-        private lateinit var selectButton: Button
+    private lateinit var dbHelper: CategoryDBHelper
+    private val selectedCategories = mutableListOf<String>()
+    private val firestore = FirebaseFirestore.getInstance()
 
-        private lateinit var groceriesButton: Button
-        private lateinit var rentButton: Button
-        private lateinit var petrolButton: Button
-        private lateinit var billsButton: Button
-        private lateinit var homeButton: Button
-        private lateinit var vacationButton: Button
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_category, container, false)
 
-        override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View? {
-            val view = inflater.inflate(R.layout.fragment_category, container, false)
+        dbHelper = CategoryDBHelper(requireContext())
 
-            // Bind Views
-            groceriesButton = view.findViewById(R.id.Groceries)
-            rentButton = view.findViewById(R.id.Rent)
-            petrolButton = view.findViewById(R.id.Petrol)
-            billsButton = view.findViewById(R.id.Bills)
-            homeButton = view.findViewById(R.id.Home)
-            vacationButton = view.findViewById(R.id.Vacation)
+        ViewCompat.setOnApplyWindowInsetsListener(view.findViewById(R.id.CategoryFragment)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
-            customCategoryEditText = view.findViewById(R.id.editTextCustomCategory)
-            addCustomCategoryButton = view.findViewById(R.id.btnAddCategory)
-            selectButton = view.findViewById(R.id.selectCategoriesButton)
+        val buttons = listOf(
+            Pair(R.id.Groceries, "Groceries"),
+            Pair(R.id.Rent, "Rent"),
+            Pair(R.id.Petrol, "Petrol"),
+            Pair(R.id.Bills, "Bills"),
+            Pair(R.id.Home, "Home"),
+            Pair(R.id.Vacation, "Vacation")
+        )
 
-            // Add custom category logic
-            addCustomCategoryButton.setOnClickListener {
-                val customText = customCategoryEditText.text.toString().trim()
-                if (customText.isNotEmpty()) {
-                    // You can add this dynamically to a list or database
-                    Toast.makeText(context, "Custom category added: $customText", Toast.LENGTH_SHORT).show()
-                    customCategoryEditText.text.clear()
+        buttons.forEach { (id, categoryName) ->
+            view.findViewById<Button>(id).setOnClickListener {
+                if (!selectedCategories.contains(categoryName)) {
+                    selectedCategories.add(categoryName)
+                    it.setBackgroundColor(Color.parseColor("#5C6BC0"))
+                    Toast.makeText(requireContext(), "$categoryName selected", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
 
-            // Example: handle select click
-            selectButton.setOnClickListener {
-                // Save selected categories
-                Toast.makeText(context, "Categories selected!", Toast.LENGTH_SHORT).show()
-                // Navigate to next screen or save to DB
+        val customBtn = view.findViewById<Button>(R.id.btnAddCategory)
+        val customInput = view.findViewById<EditText>(R.id.editTextCustomCategory)
+
+        customBtn.setOnClickListener {
+            val customName = customInput.text.toString().trim()
+            if (customName.isNotEmpty() && !selectedCategories.contains(customName)) {
+                selectedCategories.add(customName)
+                Toast.makeText(requireContext(), "$customName added", Toast.LENGTH_SHORT).show()
+                customInput.setText("")
+            }
+        }
+
+        val selectBtn = view.findViewById<Button>(R.id.selectCategoriesButton)
+        selectBtn.setOnClickListener {
+            if (selectedCategories.isEmpty()) {
+                Toast.makeText(requireContext(), "Please select or add categories", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
 
-            return view
-        }
-    }
+            // Save locally
+            selectedCategories.forEach { dbHelper.insertCategory(it) }
 
+            // Save online
+            val categoriesMap = hashMapOf(
+                "categories" to selectedCategories,
+                "timestamp" to System.currentTimeMillis()
+            )
+
+            firestore.collection("selectedCategories")
+                .add(categoriesMap)
+                .addOnSuccessListener {
+                    Toast.makeText(requireContext(), "Categories saved online!", Toast.LENGTH_SHORT).show()
+
+
+                    findNavController().navigate(R.id.action_categoryFragment_to_budgetGoalsFragment)
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(requireContext(), "Failed to save categories: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+        }
+
+        return view
+    }
 }

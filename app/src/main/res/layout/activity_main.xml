@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="113dp"
         android:layout_gravity="bottom"
-        android:background="#2B326A"
+        android:background="#2B2C6D"
         app:itemIconSize="28dp"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"

@@ -1,13 +1,16 @@
 package com.example.prog7313pocketplanpoe
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.room.util.TableInfo.Column
+import androidx.navigation.fragment.findNavController
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.LimitLine
 import com.github.mikephil.charting.components.XAxis
@@ -20,13 +23,20 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 class ReportsPageFragment : Fragment() {
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_reports_page, container, false)
-    }
+    ): View {
+        val view = inflater.inflate(R.layout.fragment_reports_page, container, false)
 
+        val rewardsButton = view.findViewById<Button>(R.id.rewardsButton)
+        rewardsButton.setOnClickListener {
+            findNavController().navigate(R.id.action_reportspageFragment_to_rewardsFragment)
+        }
+
+        return view
+    }
 
     private fun setupChart() {
         val chart = view?.findViewById<BarChart>(R.id.spendingChart)
