@@ -100,10 +100,10 @@
         android:label="User Profile" />
 
     <!--    add Receipt page-->
-<!--    <fragment-->
-<!--        android:id="@+id/addReceiptFragment"-->
-<!--        android:name="com.example.prog7313pocketplanpoe.AddReceiptFragment"-->
-<!--        android:label="Add Receipt" />-->
+    <fragment
+        android:id="@+id/addReceiptFragment"
+        android:name="com.example.prog7313pocketplanpoe.AddReceiptFragment"
+        android:label="Add Receipt" />
 
     <!--    Add Transaction page-->
     <fragment
@@ -113,7 +113,9 @@
     <action
         android:id="@+id/action_addTransactionFragment_to_homePageFragment"
         app:destination="@id/AddTransaction" />
-
+    <action
+        android:id="@+id/action_AddtransactionFragment_to_addReceiptFragment"
+        app:destination="@id/addReceiptFragment" />
 
 <!--    &lt;!&ndash;    Expenses page&ndash;&gt;-->
 <!--    <fragment-->
@@ -135,7 +137,7 @@
         android:name="com.example.prog7313pocketplanpoe.LanguageFragment"
         android:label="Language" />
 
-    <!--    Reports page-->
+<!--        Reports page-->
     <fragment
         android:id="@+id/reportsFragment"
         android:name="com.example.prog7313pocketplanpoe.ReportsPageFragment"
@@ -160,8 +162,11 @@
         android:name="com.example.prog7313pocketplanpoe.ViewTransactionsFragment"
         android:label="View Transactions" />
     <action
-        android:id="@+id/action_viewTransctionsFragment_to_RewardsFragment"
+        android:id="@+id/action_viewTransactionsFragment_to_RewardsFragment"
         app:destination="@id/rewardsFragment" />
+    <action
+        android:id="@+id/action_viewTransactionsFragment_to_homePageFragment"
+        app:destination="@id/homePageFragment" />
 
 
 
