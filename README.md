@@ -59,7 +59,7 @@ Once the app is installed and running:
 - 💱 Currency Support
 
 ## Video Demonstration Link 
-
+https://youtu.be/mmbqSzaXbA8?si=XbXFYspIz1zB8Ch1 
 
 ## 🔧 Tech Stack 
 - Kotlin (Main Language)
