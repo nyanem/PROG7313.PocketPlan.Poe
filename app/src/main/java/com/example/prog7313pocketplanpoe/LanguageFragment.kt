@@ -1,59 +1,125 @@
 package com.example.prog7313pocketplanpoe
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
+
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.content.Intent
+import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.widget.*
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [LanguageFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LanguageFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var languageSpinner: Spinner
+    private lateinit var currencySpinner: Spinner
+    private lateinit var languages: Array<String>
+    private lateinit var languageCodes: Array<String>
+    private lateinit var currencies: Array<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    ): View {
         return inflater.inflate(R.layout.fragment_language, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LanguageFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LanguageFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Initialize views
+        languageSpinner = view.findViewById(R.id.languageSpinner)
+        currencySpinner = view.findViewById(R.id.currencySpinner)
+        val backButton = view.findViewById<ImageButton>(R.id.backButton)
+
+        // Set up back button
+        backButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+        // Load resources
+        languages = resources.getStringArray(R.array.language_options)
+        languageCodes = resources.getStringArray(R.array.language_codes)
+        currencies = resources.getStringArray(R.array.currency_array)
+
+        setupLanguageSpinner()
+        setupCurrencySpinner()
+    }
+
+    private fun setupLanguageSpinner() {
+        val adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_language, languages)
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item_language)
+        languageSpinner.adapter = adapter
+
+        val currentLanguage = LanguageManager.getCurrentLanguage(requireContext())
+        val position = languageCodes.indexOf(currentLanguage)
+        if (position != -1) languageSpinner.setSelection(position)
+
+        languageSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                val selectedCode = languageCodes[pos]
+                val selectedName = languages[pos]
+                val savedLang = LanguageManager.getCurrentLanguage(requireContext())
+
+                if (selectedCode != savedLang) {
+                    LanguageManager.setLanguage(requireContext(), selectedCode)
+                    Toast.makeText(
+                        requireContext(),
+                        "${getString(R.string.language_changed)} $selectedName",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    restartApp()
                 }
             }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+    }
+
+    private fun setupCurrencySpinner() {
+        val adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_language, currencies)
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item_language)
+        currencySpinner.adapter = adapter
+
+        val currentCurrency = CurrencyManager.getCurrentCurrency(requireContext())
+        val position = currencies.indexOf(currentCurrency)
+        if (position != -1) currencySpinner.setSelection(position)
+        else currencySpinner.setSelection(0)
+
+        currencySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                if (pos > 0) {
+                    val selectedCurrency = currencies[pos]
+                    val savedCurrency = CurrencyManager.getCurrentCurrency(requireContext())
+
+                    if (selectedCurrency != savedCurrency) {
+                        CurrencyManager.setCurrentCurrency(requireContext(), selectedCurrency)
+                        Toast.makeText(
+                            requireContext(),
+                            "${getString(R.string.currency_changed)} $selectedCurrency",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+    }
+    private fun restartApp() {
+        val context = requireContext()
+        val launchIntent = context.packageManager.getLaunchIntentForPackage(context.packageName)
+        if (launchIntent != null) {
+            launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(launchIntent)
+            requireActivity().finish()
+        } else {
+            android.util.Log.e("RestartApp", "Launch intent is null")
+        }
     }
 }

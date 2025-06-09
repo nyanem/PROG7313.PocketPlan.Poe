@@ -2,11 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/homePageFragmentFragment"
-        android:icon="@drawable/ic_home"
-        android:title="HomePage" />
-
-    <item
         android:id="@+id/viewTransactionsFragment"
         android:icon="@drawable/ic_transactions"
         android:title="Transactions" />
@@ -17,9 +12,14 @@
         android:title="Add" />
 
     <item
+        android:id="@+id/homePageFragment"
+        android:icon="@drawable/ic_home"
+        android:title="HomePage" />
+
+    <item
         android:id="@+id/reportsFragment"
         android:icon="@drawable/ic_rewards"
-        android:title="Report" />
+        android:title="Dashboard" />
 
     <item
         android:id="@+id/userProfileFragment"

@@ -15,19 +15,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        //idk what's this for
         NavigationUI.setupWithNavController(bottomNav, navController)
 
+        //Setting the pages the navigation will be showing on.
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.homePageFragment,
                 R.id.userProfileFragment,
-                R.id.addReceiptFragment,
                 R.id.reportsFragment,
                 R.id.rewardsFragment,
                 R.id.AddTransaction -> {
