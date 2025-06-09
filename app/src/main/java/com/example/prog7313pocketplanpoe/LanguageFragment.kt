@@ -121,5 +121,6 @@ class LanguageFragment : Fragment() {
         } else {
             android.util.Log.e("RestartApp", "Launch intent is null")
         }
+
     }
 }
