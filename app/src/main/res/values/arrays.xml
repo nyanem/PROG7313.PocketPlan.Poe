@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Currency options -->
+    <string-array name="currency_array">
+        <item>@string/select_currency</item>
+        <item>@string/currency_rands</item>
+        <item>@string/currency_dollars</item>
+        <item>@string/currency_euros</item>
+        <item>@string/currency_pounds</item>
+    </string-array>
+
+    <string-array name="language_options">
+        <item>@string/english</item>
+        <item>@string/afrikaans</item>
+        <item>@string/xhosa</item>
+    </string-array>
+
+    <string-array name="language_codes">
+        <item>en</item>
+        <item>af</item>
+        <item>xh</item>
+    </string-array>
+</resources>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "976464412929",
+    "project_id": "pocketplan-9a7f3",
+    "storage_bucket": "pocketplan-9a7f3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976464412929:android:7ae1a3077fec935ea49b00",
+        "android_client_info": {
+          "package_name": "com.example.prog7313pocketplanpoe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTkFVkegavWEiKXdoxIWQLkS7ii4QWuAw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

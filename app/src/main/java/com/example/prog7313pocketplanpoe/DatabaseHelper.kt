@@ -1,4 +1,4 @@
-package com.example.pocketplan
+package com.example.prog7313pocketplanpoe
 
 import android.content.ContentValues
 import android.content.Context
@@ -10,7 +10,7 @@ import java.sql.Blob
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 8
         private const val DATABASE_NAME = "PocketPlan.db"
 
         // Table names

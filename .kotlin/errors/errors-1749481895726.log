@@ -1,0 +1,282 @@
+kotlin version: 2.0.21
+error message: org.jetbrains.kotlin.backend.common.BackendException: Backend Internal error: Exception during IR lowering
+File being compiled: /Users/aman.adams/AndroidStudioProjects/PROG7313.PocketPlan.PoeAmanBranch/app/src/main/java/com/example/prog7313pocketplanpoe/ReportsPageFragment.kt
+The root cause java.lang.RuntimeException was thrown at: org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:47)
+	at org.jetbrains.kotlin.backend.common.CodegenUtil.reportBackendException(CodegenUtil.kt:253)
+	at org.jetbrains.kotlin.backend.common.CodegenUtil.reportBackendException$default(CodegenUtil.kt:236)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invokeSequential(performByIrFile.kt:65)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invoke(performByIrFile.kt:52)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invoke(performByIrFile.kt:38)
+	at org.jetbrains.kotlin.backend.common.phaser.NamedCompilerPhase.phaseBody(CompilerPhase.kt:166)
+	at org.jetbrains.kotlin.backend.common.phaser.AbstractNamedCompilerPhase.invoke(CompilerPhase.kt:113)
+	at org.jetbrains.kotlin.backend.common.phaser.CompositePhase.invoke(PhaseBuilders.kt:27)
+	at org.jetbrains.kotlin.backend.common.phaser.CompositePhase.invoke(PhaseBuilders.kt:14)
+	at org.jetbrains.kotlin.backend.common.phaser.NamedCompilerPhase.phaseBody(CompilerPhase.kt:166)
+	at org.jetbrains.kotlin.backend.common.phaser.AbstractNamedCompilerPhase.invoke(CompilerPhase.kt:113)
+	at org.jetbrains.kotlin.backend.common.phaser.CompilerPhaseKt.invokeToplevel(CompilerPhase.kt:62)
+	at org.jetbrains.kotlin.backend.jvm.JvmIrCodegenFactory.invokeCodegen(JvmIrCodegenFactory.kt:371)
+	at org.jetbrains.kotlin.codegen.CodegenFactory.generateModule(CodegenFactory.kt:47)
+	at org.jetbrains.kotlin.backend.jvm.JvmIrCodegenFactory.generateModuleInFrontendIRMode(JvmIrCodegenFactory.kt:433)
+	at org.jetbrains.kotlin.cli.jvm.compiler.pipeline.JvmCompilerPipelineKt.generateCodeFromIr(jvmCompilerPipeline.kt:246)
+	at org.jetbrains.kotlin.cli.jvm.compiler.pipeline.JvmCompilerPipelineKt.compileModulesUsingFrontendIrAndLightTree(jvmCompilerPipeline.kt:142)
+	at org.jetbrains.kotlin.cli.jvm.K2JVMCompiler.doExecute(K2JVMCompiler.kt:148)
+	at org.jetbrains.kotlin.cli.jvm.K2JVMCompiler.doExecute(K2JVMCompiler.kt:43)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.execImpl(CLICompiler.kt:103)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.execImpl(CLICompiler.kt:49)
+	at org.jetbrains.kotlin.cli.common.CLITool.exec(CLITool.kt:101)
+	at org.jetbrains.kotlin.incremental.IncrementalJvmCompilerRunner.runCompiler(IncrementalJvmCompilerRunner.kt:464)
+	at org.jetbrains.kotlin.incremental.IncrementalJvmCompilerRunner.runCompiler(IncrementalJvmCompilerRunner.kt:73)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.doCompile(IncrementalCompilerRunner.kt:506)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compileImpl(IncrementalCompilerRunner.kt:423)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.tryCompileIncrementally$lambda$9$compile(IncrementalCompilerRunner.kt:249)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.tryCompileIncrementally(IncrementalCompilerRunner.kt:267)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compile(IncrementalCompilerRunner.kt:120)
+	at org.jetbrains.kotlin.daemon.CompileServiceImplBase.execIncrementalCompiler(CompileServiceImpl.kt:675)
+	at org.jetbrains.kotlin.daemon.CompileServiceImplBase.access$execIncrementalCompiler(CompileServiceImpl.kt:92)
+	at org.jetbrains.kotlin.daemon.CompileServiceImpl.compile(CompileServiceImpl.kt:1660)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Exception while generating code for:
+FUN name:setupBarChart visibility:private modality:FINAL <> ($this:com.example.prog7313pocketplanpoe.ReportsPageFragment, view:android.view.View) returnType:kotlin.Unit
+  $this: VALUE_PARAMETER name:<this> type:com.example.prog7313pocketplanpoe.ReportsPageFragment
+  VALUE_PARAMETER name:view index:0 type:android.view.View
+  BLOCK_BODY
+    VAR name:barChart type:@[FlexibleNullability] com.github.mikephil.charting.charts.BarChart? [val]
+      CALL 'public final fun findViewById <T> (p0: kotlin.Int): @[FlexibleNullability] T of android.view.View.findViewById? declared in android.view.View' type=@[FlexibleNullability] com.github.mikephil.charting.charts.BarChart? origin=null
+        <T>: @[FlexibleNullability] com.github.mikephil.charting.charts.BarChart?
+        $this: GET_VAR 'view: android.view.View declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=android.view.View origin=null
+        p0: GET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:barChart type:kotlin.Int visibility:public [static] declared in com.example.prog7313pocketplanpoe.R.id' type=kotlin.Int superQualifierSymbol=com.example.prog7313pocketplanpoe.R.id origin=null
+    VAR name:dbHelper type:com.example.prog7313pocketplanpoe.BudgetGoalDBHelper [val]
+      CONSTRUCTOR_CALL 'public constructor <init> (context: android.content.Context) [primary] declared in com.example.prog7313pocketplanpoe.BudgetGoalDBHelper' type=com.example.prog7313pocketplanpoe.BudgetGoalDBHelper origin=null
+        context: BLOCK type=android.content.Context origin=null
+          VAR IR_TEMPORARY_VARIABLE name:tmp0 type:kotlin.Any? [val]
+            CALL 'public final fun requireContext (): @[EnhancedNullability] android.content.Context [fake_override] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment' type=@[EnhancedNullability] android.content.Context origin=null
+              $this: GET_VAR '<this>: com.example.prog7313pocketplanpoe.ReportsPageFragment declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=com.example.prog7313pocketplanpoe.ReportsPageFragment origin=null
+          CALL 'public final fun checkNotNullExpressionValue (value: kotlin.Any?, expression: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+            value: GET_VAR 'val tmp0: kotlin.Any? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=kotlin.Any? origin=null
+            expression: CONST String type=kotlin.String value="requireContext(...)"
+          GET_VAR 'val tmp0: kotlin.Any? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=kotlin.Any? origin=null
+    VAR name:pocketPlanDbHelper type:com.example.prog7313pocketplanpoe.PocketPlanDBHelper [val]
+      CONSTRUCTOR_CALL 'public constructor <init> (context: android.content.Context) [primary] declared in com.example.prog7313pocketplanpoe.PocketPlanDBHelper' type=com.example.prog7313pocketplanpoe.PocketPlanDBHelper origin=null
+        context: BLOCK type=android.content.Context origin=null
+          VAR IR_TEMPORARY_VARIABLE name:tmp1 type:kotlin.Any? [val]
+            CALL 'public final fun requireContext (): @[EnhancedNullability] android.content.Context [fake_override] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment' type=@[EnhancedNullability] android.content.Context origin=null
+              $this: GET_VAR '<this>: com.example.prog7313pocketplanpoe.ReportsPageFragment declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=com.example.prog7313pocketplanpoe.ReportsPageFragment origin=null
+          CALL 'public final fun checkNotNullExpressionValue (value: kotlin.Any?, expression: kotlin.String): kotlin.Unit declared in kotlin.jvm.internal.Intrinsics' type=kotlin.Unit origin=null
+            value: GET_VAR 'val tmp1: kotlin.Any? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=kotlin.Any? origin=null
+            expression: CONST String type=kotlin.String value="requireContext(...)"
+          GET_VAR 'val tmp1: kotlin.Any? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=kotlin.Any? origin=null
+    VAR name:goals type:kotlin.collections.List<com.example.prog7313pocketplanpoe.BudgetGoal> [val]
+      CALL 'public final fun getAllGoals (): kotlin.collections.List<com.example.prog7313pocketplanpoe.BudgetGoal> declared in com.example.prog7313pocketplanpoe.BudgetGoalDBHelper' type=kotlin.collections.List<com.example.prog7313pocketplanpoe.BudgetGoal> origin=null
+        $this: GET_VAR 'val dbHelper: com.example.prog7313pocketplanpoe.BudgetGoalDBHelper [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=com.example.prog7313pocketplanpoe.BudgetGoalDBHelper origin=null
+    VAR IR_TEMPORARY_VARIABLE name:<destruct> type:kotlin.Pair<kotlin.Float, kotlin.Float> [val]
+      CALL 'public final fun getMonthlyGoalRange (): kotlin.Pair<kotlin.Float, kotlin.Float> declared in com.example.prog7313pocketplanpoe.PocketPlanDBHelper' type=kotlin.Pair<kotlin.Float, kotlin.Float> origin=null
+        $this: GET_VAR 'val pocketPlanDbHelper: com.example.prog7313pocketplanpoe.PocketPlanDBHelper [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=com.example.prog7313pocketplanpoe.PocketPlanDBHelper origin=null
+    VAR name:monthlyMinGoal type:kotlin.Float [val]
+      CALL 'public final fun component1 (): A of kotlin.Pair [operator] declared in kotlin.Pair' type=kotlin.Float origin=COMPONENT_N(index=1)
+        $this: GET_VAR 'val <destruct>: kotlin.Pair<kotlin.Float, kotlin.Float> [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=kotlin.Pair<kotlin.Float, kotlin.Float> origin=null
+    VAR name:monthlyMaxGoal type:kotlin.Float [val]
+      CALL 'public final fun component2 (): B of kotlin.Pair [operator] declared in kotlin.Pair' type=kotlin.Float origin=COMPONENT_N(index=2)
+        $this: GET_VAR 'val <destruct>: kotlin.Pair<kotlin.Float, kotlin.Float> [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=kotlin.Pair<kotlin.Float, kotlin.Float> origin=null
+    VAR name:categories type:kotlin.collections.List<kotlin.String> [val]
+      CALL 'public final fun map <T, R> (transform: kotlin.Function1<T of kotlin.collections.CollectionsKt.map, R of kotlin.collections.CollectionsKt.map>): kotlin.collections.List<R of kotlin.collections.CollectionsKt.map> [inline] declared in kotlin.collections.CollectionsKt' type=kotlin.collections.List<kotlin.String> origin=null
+        <T>: com.example.prog7313pocketplanpoe.BudgetGoal
+        <R>: kotlin.String
+        $receiver: GET_VAR 'val goals: kotlin.collections.List<com.example.prog7313pocketplanpoe.BudgetGoal> [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=kotlin.collections.List<com.example.prog7313pocketplanpoe.BudgetGoal> origin=null
+        transform: BLOCK type=kotlin.Function1<com.example.prog7313pocketplanpoe.BudgetGoal, kotlin.String> origin=LAMBDA
+          COMPOSITE type=kotlin.Unit origin=null
+          FUNCTION_REFERENCE 'private final fun setupBarChart$lambda$1 (it: com.example.prog7313pocketplanpoe.BudgetGoal): kotlin.String declared in com.example.prog7313pocketplanpoe.ReportsPageFragment' type=kotlin.Function1<com.example.prog7313pocketplanpoe.BudgetGoal, kotlin.String> origin=INLINE_LAMBDA reflectionTarget=null
+    VAR name:entries type:kotlin.collections.List<com.github.mikephil.charting.data.BarEntry> [val]
+      CALL 'public final fun mapIndexed <T, R> (transform: kotlin.Function2<@[ParameterName(name = "index")] kotlin.Int, T of kotlin.collections.CollectionsKt.mapIndexed, R of kotlin.collections.CollectionsKt.mapIndexed>): kotlin.collections.List<R of kotlin.collections.CollectionsKt.mapIndexed> [inline] declared in kotlin.collections.CollectionsKt' type=kotlin.collections.List<com.github.mikephil.charting.data.BarEntry> origin=null
+        <T>: com.example.prog7313pocketplanpoe.BudgetGoal
+        <R>: com.github.mikephil.charting.data.BarEntry
+        $receiver: GET_VAR 'val goals: kotlin.collections.List<com.example.prog7313pocketplanpoe.BudgetGoal> [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=kotlin.collections.List<com.example.prog7313pocketplanpoe.BudgetGoal> origin=null
+        transform: BLOCK type=kotlin.Function2<kotlin.Int, com.example.prog7313pocketplanpoe.BudgetGoal, com.github.mikephil.charting.data.BarEntry> origin=LAMBDA
+          COMPOSITE type=kotlin.Unit origin=null
+          FUNCTION_REFERENCE 'private final fun setupBarChart$lambda$2 (index: kotlin.Int, goal: com.example.prog7313pocketplanpoe.BudgetGoal): com.github.mikephil.charting.data.BarEntry declared in com.example.prog7313pocketplanpoe.ReportsPageFragment' type=kotlin.Function2<kotlin.Int, com.example.prog7313pocketplanpoe.BudgetGoal, com.github.mikephil.charting.data.BarEntry> origin=INLINE_LAMBDA reflectionTarget=null
+    VAR name:dataSet type:com.github.mikephil.charting.data.BarDataSet [val]
+      CALL 'public final fun apply <T> (block: @[ExtensionFunctionType] kotlin.Function1<T of kotlin.StandardKt.apply, kotlin.Unit>): T of kotlin.StandardKt.apply [inline] declared in kotlin.StandardKt' type=com.github.mikephil.charting.data.BarDataSet origin=null
+        <T>: com.github.mikephil.charting.data.BarDataSet
+        $receiver: CONSTRUCTOR_CALL 'public constructor <init> (p0: @[FlexibleNullability] @[FlexibleMutability] kotlin.collections.MutableList<@[FlexibleNullability] com.github.mikephil.charting.data.BarEntry?>?, p1: @[FlexibleNullability] kotlin.String?) declared in com.github.mikephil.charting.data.BarDataSet' type=com.github.mikephil.charting.data.BarDataSet origin=null
+          p0: GET_VAR 'val entries: kotlin.collections.List<com.github.mikephil.charting.data.BarEntry> [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=kotlin.collections.List<com.github.mikephil.charting.data.BarEntry> origin=null
+          p1: CONST String type=kotlin.String value="Spent"
+        block: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.github.mikephil.charting.data.BarDataSet, kotlin.Unit> origin=LAMBDA
+          COMPOSITE type=kotlin.Unit origin=null
+          FUNCTION_REFERENCE 'private final fun setupBarChart$lambda$3 (): kotlin.Unit declared in com.example.prog7313pocketplanpoe.ReportsPageFragment' type=@[ExtensionFunctionType] kotlin.Function1<com.github.mikephil.charting.data.BarDataSet, kotlin.Unit> origin=INLINE_LAMBDA reflectionTarget=null
+    VAR name:data type:com.github.mikephil.charting.data.BarData [val]
+      CONSTRUCTOR_CALL 'public constructor <init> (vararg p0: @[FlexibleNullability] com.github.mikephil.charting.interfaces.datasets.IBarDataSet?) declared in com.github.mikephil.charting.data.BarData' type=com.github.mikephil.charting.data.BarData origin=null
+        p0: BLOCK type=@[FlexibleNullability] @[FlexibleArrayElementVariance] kotlin.Array<out @[FlexibleNullability] com.github.mikephil.charting.interfaces.datasets.IBarDataSet?>? origin=null
+          VAR IR_TEMPORARY_VARIABLE name:tmp0 type:@[FlexibleNullability] @[FlexibleArrayElementVariance] kotlin.Array<out @[FlexibleNullability] com.github.mikephil.charting.interfaces.datasets.IBarDataSet?>? [val]
+            CALL 'public final fun arrayOfNulls <T> (size: kotlin.Int): kotlin.Array<T of kotlin.arrayOfNulls?> declared in kotlin' type=@[FlexibleNullability] @[FlexibleArrayElementVariance] kotlin.Array<out @[FlexibleNullability] com.github.mikephil.charting.interfaces.datasets.IBarDataSet?>? origin=null
+              <T>: @[FlexibleNullability] com.github.mikephil.charting.interfaces.datasets.IBarDataSet?
+              size: CONST Int type=kotlin.Int value=1
+          CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+            $this: GET_VAR 'val tmp0: @[FlexibleNullability] @[FlexibleArrayElementVariance] kotlin.Array<out @[FlexibleNullability] com.github.mikephil.charting.interfaces.datasets.IBarDataSet?>? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] @[FlexibleArrayElementVariance] kotlin.Array<out @[FlexibleNullability] com.github.mikephil.charting.interfaces.datasets.IBarDataSet?>? origin=null
+            index: CONST Int type=kotlin.Int value=0
+            value: GET_VAR 'val dataSet: com.github.mikephil.charting.data.BarDataSet [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=com.github.mikephil.charting.data.BarDataSet origin=null
+          GET_VAR 'val tmp0: @[FlexibleNullability] @[FlexibleArrayElementVariance] kotlin.Array<out @[FlexibleNullability] com.github.mikephil.charting.interfaces.datasets.IBarDataSet?>? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] @[FlexibleArrayElementVariance] kotlin.Array<out @[FlexibleNullability] com.github.mikephil.charting.interfaces.datasets.IBarDataSet?>? origin=null
+    CALL 'public open fun setBarWidth (p0: kotlin.Float): kotlin.Unit declared in com.github.mikephil.charting.data.BarData' type=kotlin.Unit origin=EQ
+      $this: GET_VAR 'val data: com.github.mikephil.charting.data.BarData [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=com.github.mikephil.charting.data.BarData origin=null
+      p0: CONST Float type=kotlin.Float value=0.4
+    CALL 'public open fun setData (p0: @[FlexibleNullability] com.github.mikephil.charting.data.BarData?): kotlin.Unit [fake_override] declared in com.github.mikephil.charting.charts.BarChart' type=kotlin.Unit origin=EQ
+      $this: GET_VAR 'val barChart: @[FlexibleNullability] com.github.mikephil.charting.charts.BarChart? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.charts.BarChart? origin=null
+      p0: GET_VAR 'val data: com.github.mikephil.charting.data.BarData [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=com.github.mikephil.charting.data.BarData origin=null
+    VAR name:xAxis type:@[FlexibleNullability] com.github.mikephil.charting.components.XAxis? [val]
+      CALL 'public open fun getXAxis (): @[FlexibleNullability] com.github.mikephil.charting.components.XAxis? [fake_override] declared in com.github.mikephil.charting.charts.BarChart' type=@[FlexibleNullability] com.github.mikephil.charting.components.XAxis? origin=GET_PROPERTY
+        $this: GET_VAR 'val barChart: @[FlexibleNullability] com.github.mikephil.charting.charts.BarChart? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.charts.BarChart? origin=null
+    CALL 'public open fun setValueFormatter (p0: @[FlexibleNullability] com.github.mikephil.charting.formatter.ValueFormatter?): kotlin.Unit [fake_override] declared in com.github.mikephil.charting.components.XAxis' type=kotlin.Unit origin=EQ
+      $this: GET_VAR 'val xAxis: @[FlexibleNullability] com.github.mikephil.charting.components.XAxis? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.components.XAxis? origin=null
+      p0: CONSTRUCTOR_CALL 'public constructor <init> (p0: @[FlexibleNullability] @[FlexibleMutability] kotlin.collections.MutableCollection<@[FlexibleNullability] kotlin.String?>?) declared in com.github.mikephil.charting.formatter.IndexAxisValueFormatter' type=com.github.mikephil.charting.formatter.IndexAxisValueFormatter origin=null
+        p0: GET_VAR 'val categories: kotlin.collections.List<kotlin.String> [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=kotlin.collections.List<kotlin.String> origin=null
+    CALL 'public open fun setPosition (p0: @[FlexibleNullability] com.github.mikephil.charting.components.XAxis.XAxisPosition?): kotlin.Unit declared in com.github.mikephil.charting.components.XAxis' type=kotlin.Unit origin=EQ
+      $this: GET_VAR 'val xAxis: @[FlexibleNullability] com.github.mikephil.charting.components.XAxis? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.components.XAxis? origin=null
+      p0: GET_FIELD 'FIELD FIELD_FOR_ENUM_ENTRY name:BOTTOM type:com.github.mikephil.charting.components.XAxis.XAxisPosition visibility:public [final,static] declared in com.github.mikephil.charting.components.XAxis.XAxisPosition' type=com.github.mikephil.charting.components.XAxis.XAxisPosition origin=null
+    CALL 'public open fun setGranularity (p0: kotlin.Float): kotlin.Unit [fake_override] declared in com.github.mikephil.charting.components.XAxis' type=kotlin.Unit origin=EQ
+      $this: GET_VAR 'val xAxis: @[FlexibleNullability] com.github.mikephil.charting.components.XAxis? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.components.XAxis? origin=null
+      p0: CONST Float type=kotlin.Float value=1.0
+    CALL 'public open fun setDrawGridLines (p0: kotlin.Boolean): kotlin.Unit [fake_override] declared in com.github.mikephil.charting.components.XAxis' type=kotlin.Unit origin=null
+      $this: GET_VAR 'val xAxis: @[FlexibleNullability] com.github.mikephil.charting.components.XAxis? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.components.XAxis? origin=null
+      p0: CONST Boolean type=kotlin.Boolean value=false
+    CALL 'public open fun setTextSize (p0: kotlin.Float): kotlin.Unit [fake_override] declared in com.github.mikephil.charting.components.XAxis' type=kotlin.Unit origin=EQ
+      $this: GET_VAR 'val xAxis: @[FlexibleNullability] com.github.mikephil.charting.components.XAxis? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.components.XAxis? origin=null
+      p0: CONST Float type=kotlin.Float value=18.0
+    CALL 'public open fun setTextColor (p0: kotlin.Int): kotlin.Unit [fake_override] declared in com.github.mikephil.charting.components.XAxis' type=kotlin.Unit origin=EQ
+      $this: GET_VAR 'val xAxis: @[FlexibleNullability] com.github.mikephil.charting.components.XAxis? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.components.XAxis? origin=null
+      p0: CALL 'public open fun parseColor (p0: @[FlexibleNullability] kotlin.String?): kotlin.Int declared in android.graphics.Color' type=kotlin.Int origin=null
+        p0: CONST String type=kotlin.String value="#FFF3F3"
+    CALL 'public open fun setLabelRotationAngle (p0: kotlin.Float): kotlin.Unit declared in com.github.mikephil.charting.components.XAxis' type=kotlin.Unit origin=EQ
+      $this: GET_VAR 'val xAxis: @[FlexibleNullability] com.github.mikephil.charting.components.XAxis? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.components.XAxis? origin=null
+      p0: CONST Float type=kotlin.Float value=-30.0
+    VAR name:yAxisLeft type:@[FlexibleNullability] com.github.mikephil.charting.components.YAxis? [val]
+      CALL 'public open fun getAxisLeft (): @[FlexibleNullability] com.github.mikephil.charting.components.YAxis? [fake_override] declared in com.github.mikephil.charting.charts.BarChart' type=@[FlexibleNullability] com.github.mikephil.charting.components.YAxis? origin=GET_PROPERTY
+        $this: GET_VAR 'val barChart: @[FlexibleNullability] com.github.mikephil.charting.charts.BarChart? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.charts.BarChart? origin=null
+    CALL 'public open fun setTextSize (p0: kotlin.Float): kotlin.Unit [fake_override] declared in com.github.mikephil.charting.components.YAxis' type=kotlin.Unit origin=EQ
+      $this: GET_VAR 'val yAxisLeft: @[FlexibleNullability] com.github.mikephil.charting.components.YAxis? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.components.YAxis? origin=null
+      p0: CONST Float type=kotlin.Float value=18.0
+    CALL 'public open fun setTextColor (p0: kotlin.Int): kotlin.Unit [fake_override] declared in com.github.mikephil.charting.components.YAxis' type=kotlin.Unit origin=EQ
+      $this: GET_VAR 'val yAxisLeft: @[FlexibleNullability] com.github.mikephil.charting.components.YAxis? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.components.YAxis? origin=null
+      p0: CALL 'public open fun parseColor (p0: @[FlexibleNullability] kotlin.String?): kotlin.Int declared in android.graphics.Color' type=kotlin.Int origin=null
+        p0: CONST String type=kotlin.String value="#FFF3F3"
+    CALL 'public open fun removeAllLimitLines (): kotlin.Unit [fake_override] declared in com.github.mikephil.charting.components.YAxis' type=kotlin.Unit origin=null
+      $this: GET_VAR 'val yAxisLeft: @[FlexibleNullability] com.github.mikephil.charting.components.YAxis? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.components.YAxis? origin=null
+    VAR name:minGoalLine type:com.github.mikephil.charting.components.LimitLine [val]
+      CALL 'public final fun apply <T> (block: @[ExtensionFunctionType] kotlin.Function1<T of kotlin.StandardKt.apply, kotlin.Unit>): T of kotlin.StandardKt.apply [inline] declared in kotlin.StandardKt' type=com.github.mikephil.charting.components.LimitLine origin=null
+        <T>: com.github.mikephil.charting.components.LimitLine
+        $receiver: CONSTRUCTOR_CALL 'public constructor <init> (p0: kotlin.Float, p1: @[FlexibleNullability] kotlin.String?) declared in com.github.mikephil.charting.components.LimitLine' type=com.github.mikephil.charting.components.LimitLine origin=null
+          p0: GET_VAR 'val monthlyMinGoal: kotlin.Float [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=kotlin.Float origin=null
+          p1: CONST String type=kotlin.String value="Min Goal"
+        block: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.github.mikephil.charting.components.LimitLine, kotlin.Unit> origin=LAMBDA
+          COMPOSITE type=kotlin.Unit origin=null
+          FUNCTION_REFERENCE 'private final fun setupBarChart$lambda$4 (): kotlin.Unit declared in com.example.prog7313pocketplanpoe.ReportsPageFragment' type=@[ExtensionFunctionType] kotlin.Function1<com.github.mikephil.charting.components.LimitLine, kotlin.Unit> origin=INLINE_LAMBDA reflectionTarget=null
+    VAR name:maxGoalLine type:com.github.mikephil.charting.components.LimitLine [val]
+      CALL 'public final fun apply <T> (block: @[ExtensionFunctionType] kotlin.Function1<T of kotlin.StandardKt.apply, kotlin.Unit>): T of kotlin.StandardKt.apply [inline] declared in kotlin.StandardKt' type=com.github.mikephil.charting.components.LimitLine origin=null
+        <T>: com.github.mikephil.charting.components.LimitLine
+        $receiver: CONSTRUCTOR_CALL 'public constructor <init> (p0: kotlin.Float, p1: @[FlexibleNullability] kotlin.String?) declared in com.github.mikephil.charting.components.LimitLine' type=com.github.mikephil.charting.components.LimitLine origin=null
+          p0: GET_VAR 'val monthlyMaxGoal: kotlin.Float [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=kotlin.Float origin=null
+          p1: CONST String type=kotlin.String value="Max Goal"
+        block: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.github.mikephil.charting.components.LimitLine, kotlin.Unit> origin=LAMBDA
+          COMPOSITE type=kotlin.Unit origin=null
+          FUNCTION_REFERENCE 'private final fun setupBarChart$lambda$5 (): kotlin.Unit declared in com.example.prog7313pocketplanpoe.ReportsPageFragment' type=@[ExtensionFunctionType] kotlin.Function1<com.github.mikephil.charting.components.LimitLine, kotlin.Unit> origin=INLINE_LAMBDA reflectionTarget=null
+    CALL 'public open fun addLimitLine (p0: @[FlexibleNullability] com.github.mikephil.charting.components.LimitLine?): kotlin.Unit [fake_override] declared in com.github.mikephil.charting.components.YAxis' type=kotlin.Unit origin=null
+      $this: GET_VAR 'val yAxisLeft: @[FlexibleNullability] com.github.mikephil.charting.components.YAxis? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.components.YAxis? origin=null
+      p0: GET_VAR 'val minGoalLine: com.github.mikephil.charting.components.LimitLine [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=com.github.mikephil.charting.components.LimitLine origin=null
+    CALL 'public open fun addLimitLine (p0: @[FlexibleNullability] com.github.mikephil.charting.components.LimitLine?): kotlin.Unit [fake_override] declared in com.github.mikephil.charting.components.YAxis' type=kotlin.Unit origin=null
+      $this: GET_VAR 'val yAxisLeft: @[FlexibleNullability] com.github.mikephil.charting.components.YAxis? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.components.YAxis? origin=null
+      p0: GET_VAR 'val maxGoalLine: com.github.mikephil.charting.components.LimitLine [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=com.github.mikephil.charting.components.LimitLine origin=null
+    CALL 'public open fun setEnabled (p0: kotlin.Boolean): kotlin.Unit [fake_override] declared in com.github.mikephil.charting.components.YAxis' type=kotlin.Unit origin=EQ
+      $this: CALL 'public open fun getAxisRight (): @[FlexibleNullability] com.github.mikephil.charting.components.YAxis? [fake_override] declared in com.github.mikephil.charting.charts.BarChart' type=@[FlexibleNullability] com.github.mikephil.charting.components.YAxis? origin=GET_PROPERTY
+        $this: GET_VAR 'val barChart: @[FlexibleNullability] com.github.mikephil.charting.charts.BarChart? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.charts.BarChart? origin=null
+      p0: CONST Boolean type=kotlin.Boolean value=false
+    CALL 'public open fun setEnabled (p0: kotlin.Boolean): kotlin.Unit [fake_override] declared in com.github.mikephil.charting.components.Description' type=kotlin.Unit origin=EQ
+      $this: CALL 'public open fun getDescription (): @[FlexibleNullability] com.github.mikephil.charting.components.Description? [fake_override] declared in com.github.mikephil.charting.charts.BarChart' type=@[FlexibleNullability] com.github.mikephil.charting.components.Description? origin=GET_PROPERTY
+        $this: GET_VAR 'val barChart: @[FlexibleNullability] com.github.mikephil.charting.charts.BarChart? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.charts.BarChart? origin=null
+      p0: CONST Boolean type=kotlin.Boolean value=false
+    CALL 'public open fun setVisibleXRangeMaximum (p0: kotlin.Float): kotlin.Unit [fake_override] declared in com.github.mikephil.charting.charts.BarChart' type=kotlin.Unit origin=null
+      $this: GET_VAR 'val barChart: @[FlexibleNullability] com.github.mikephil.charting.charts.BarChart? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.charts.BarChart? origin=null
+      p0: CALL 'public open fun toFloat (): kotlin.Float declared in kotlin.Int' type=kotlin.Float origin=null
+        $this: CALL 'public abstract fun <get-size> (): kotlin.Int declared in kotlin.collections.List' type=kotlin.Int origin=GET_PROPERTY
+          $this: GET_VAR 'val categories: kotlin.collections.List<kotlin.String> [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=kotlin.collections.List<kotlin.String> origin=null
+    CALL 'public open fun invalidate (): kotlin.Unit [fake_override] declared in com.github.mikephil.charting.charts.BarChart' type=kotlin.Unit origin=null
+      $this: GET_VAR 'val barChart: @[FlexibleNullability] com.github.mikephil.charting.charts.BarChart? [val] declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart' type=@[FlexibleNullability] com.github.mikephil.charting.charts.BarChart? origin=null
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:47)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate$default(FunctionCodegen.kt:40)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateMethodNode(ClassCodegen.kt:406)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateMethod(ClassCodegen.kt:423)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generate(ClassCodegen.kt:168)
+	at org.jetbrains.kotlin.backend.jvm.FileCodegen.lower(JvmPhases.kt:39)
+	at org.jetbrains.kotlin.backend.common.phaser.PhaseFactoriesKt.createFilePhase$lambda$4(PhaseFactories.kt:71)
+	at org.jetbrains.kotlin.backend.common.phaser.PhaseBuildersKt$createSimpleNamedCompilerPhase$1.phaseBody(PhaseBuilders.kt:69)
+	at org.jetbrains.kotlin.backend.common.phaser.SimpleNamedCompilerPhase.phaseBody(CompilerPhase.kt:226)
+	at org.jetbrains.kotlin.backend.common.phaser.AbstractNamedCompilerPhase.invoke(CompilerPhase.kt:113)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invokeSequential(performByIrFile.kt:62)
+	... 44 more
+Caused by: java.lang.RuntimeException: Exception while generating code for:
+FUN INLINE_LAMBDA name:setupBarChart$lambda$3 visibility:private modality:FINAL <> ($receiver:com.github.mikephil.charting.data.BarDataSet) returnType:kotlin.Unit
+  $receiver: VALUE_PARAMETER name:$this$apply type:com.github.mikephil.charting.data.BarDataSet
+  BLOCK_BODY
+    VAR name:$i$a$-apply-ReportsPageFragment$setupBarChart$dataSet$1 type:kotlin.Int [val]
+      CONST Int type=kotlin.Int value=0
+    CALL 'public open fun setColor (p0: kotlin.Int): kotlin.Unit [fake_override] declared in com.github.mikephil.charting.data.BarDataSet' type=kotlin.Unit origin=EQ
+      $this: GET_VAR '$this$apply: com.github.mikephil.charting.data.BarDataSet declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart$lambda$3' type=com.github.mikephil.charting.data.BarDataSet origin=null
+      p0: CALL 'public open fun parseColor (p0: @[FlexibleNullability] kotlin.String?): kotlin.Int declared in android.graphics.Color' type=kotlin.Int origin=null
+        p0: CONST String type=kotlin.String value="#7886C7"
+    CALL 'public open fun setValueTextSize (p0: kotlin.Float): kotlin.Unit [fake_override] declared in com.github.mikephil.charting.data.BarDataSet' type=kotlin.Unit origin=EQ
+      $this: GET_VAR '$this$apply: com.github.mikephil.charting.data.BarDataSet declared in com.example.prog7313pocketplanpoe.ReportsPageFragment.setupBarChart$lambda$3' type=com.github.mikephil.charting.data.BarDataSet origin=null
+      p0: CONST Float type=kotlin.Float value=18.0
+    SET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:textColor type:kotlin.Int visibility:public [final,static] declared in android.R.attr' type=kotlin.Unit superQualifierSymbol=android.R.attr origin=EQ
+      value: CALL 'public open fun parseColor (p0: @[FlexibleNullability] kotlin.String?): kotlin.Int declared in android.graphics.Color' type=kotlin.Int origin=null
+        p0: CONST String type=kotlin.String value="#FFF3F3"
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:47)
+	at org.jetbrains.kotlin.backend.jvm.codegen.IrSourceCompilerForInline.generateLambdaBody(IrSourceCompilerForInline.kt:67)
+	at org.jetbrains.kotlin.codegen.inline.ExpressionLambda.generateLambdaBody(LambdaInfo.kt:72)
+	at org.jetbrains.kotlin.backend.jvm.codegen.IrInlineCodegen.genValueAndPut(IrInlineCodegen.kt:100)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall$handleParameter(ExpressionCodegen.kt:616)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:644)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.expressions.IrCall.accept(IrCall.kt:24)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitVariable(ExpressionCodegen.kt:790)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitVariable(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.declarations.IrVariable.accept(IrVariable.kt:36)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:579)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:584)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.expressions.IrBlockBody.accept(IrBlockBody.kt:20)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.generate(ExpressionCodegen.kt:240)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.doGenerate(FunctionCodegen.kt:123)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:44)
+	... 54 more
+Caused by: java.lang.AssertionError: access of const val: SET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:textColor type:kotlin.Int visibility:public [final,static] declared in android.R.attr' type=kotlin.Unit superQualifierSymbol=android.R.attr origin=EQ
+  value: CALL 'public open fun parseColor (p0: @[FlexibleNullability] kotlin.String?): kotlin.Int declared in android.graphics.Color' type=kotlin.Int origin=null
+    p0: CONST String type=kotlin.String value="#FFF3F3"
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitFieldAccess(ExpressionCodegen.kt:861)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitFieldAccess(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.visitors.IrElementVisitor$DefaultImpls.visitSetField(IrElementVisitor.kt:206)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitSetField(ExpressionCodegen.kt:908)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitSetField(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.expressions.IrSetField.accept(IrSetField.kt:21)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:579)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:584)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.expressions.IrBlockBody.accept(IrBlockBody.kt:20)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.generate(ExpressionCodegen.kt:240)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.doGenerate(FunctionCodegen.kt:123)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:44)
+	... 71 more
+
+

@@ -3,4 +3,65 @@
     <string name="getStarted_txt">Get Started</string>
     <string name="name">Name</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="time_period_options">
+        <item>Last 7 days</item>
+        <item>This Month</item>
+        <item>Last Month</item>
+    </string-array>
+
+
+    <string name="or">Or</string>
+    <string name="change_language">Change the Language?</string>
+    <string name="change_currency">Change the currency?</string>
+    <string name="select_language">Select a language</string>
+    <string name="english">English</string>
+    <string name="afrikaans">Afrikaans</string>
+    <string name="xhosa">Xhosa</string>
+    <string name="language_changed">Language changed to</string>
+    <string name="restart_required">Restart the app to apply changes</string>
+    <string name="select_currency">Select a currency</string>
+    <string name="currency_changed">Currency changed to</string>
+    <string name="currency_rands">Rands (ZAR)</string>
+    <string name="currency_dollars">Dollars (USD)</string>
+    <string name="currency_euros">Euros (EUR)</string>
+    <string name="currency_pounds">Pounds (GBP)</string>
+
+    <!-- User Profile -->
+    <string name="my_profile">My Profile</string>
+    <string name="profile_image_desc">Profile Image</string>
+    <string name="profile_name">Profile Name</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="budgeting_tips">Budgeting Tips</string>
+    <string name="language_currency">Language / Currency</string>
+    <string name="log_out">Log Out</string>
+
+    <!-- User Profile Activity -->
+    <string name="your_name">Your Name</string>
+    <string name="faq">FAQ</string>
+
+    <!-- Tips & Tricks -->
+    <string name="budgeting_tips_title">Budgeting Tips and Tricks</string>
+    <string name="tip_1">• Track your spending weekly to stay on top of your budget.</string>
+    <string name="tip_2">• Set realistic goals for savings and categorize your expenses.</string>
+    <string name="tip_3">• Avoid impulse buying by creating a shopping list before you go out.</string>
+    <string name="tip_4">• Review and adjust your budget monthly based on your income and expenses.</string>
+
+    <!-- Common UI Elements -->
+    <string name="logo_desc">Logo</string>
+    <string name="back_button_desc">Back</string>
+    <string name="user_icon_desc">User profile</string>
+
+    <!-- Language Activity -->
+    <string name="logo_description">Logo</string>
+    <string name="user_icon_description">User Icon</string>
+    <string name="language_icon_description">Language Icon</string>
+    <!-- Rewards Activity -->
+    <string name="rewards">Rewards</string>
+    <string name="savings_goals">Savings goals</string>
+    <string name="free_coffee_reward">Free Seattle Coffee - View Code</string>
+    <string name="two_week_streak">2 Week Streak</string>    <!-- Reports Activity -->
+    <string name="reports">Reports</string>
+    <string name="total_spending_report">Total Spending Report</string>
+    <string name="total_savings_report">Total Savings Report</string>
+
 </resources>

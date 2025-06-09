@@ -1,5 +1,6 @@
 package com.example.prog7313pocketplanpoe
 
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 
 class LoginFragment : Fragment() {
+
+    private lateinit var dbHelper: PocketPlanDBHelper
 
     private lateinit var usernameField: EditText
     private lateinit var passwordField: EditText
@@ -25,28 +28,91 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Bind views
+        // Initialize the database helper
+        dbHelper = PocketPlanDBHelper(requireContext())
+
+        // Initialize UI elements
         usernameField = view.findViewById(R.id.username_txtbox)
         passwordField = view.findViewById(R.id.password_txtbox)
         loginButton = view.findViewById(R.id.loginButton)
         forgotPasswordText = view.findViewById(R.id.forgotPassword)
 
+        // Login button logic
         loginButton.setOnClickListener {
-            val username = usernameField.text.toString().trim()
-            val password = passwordField.text.toString().trim()
+            val username = usernameField.text.toString()
+            val password = passwordField.text.toString()
 
             if (username.isEmpty() || password.isEmpty()) {
                 Toast.makeText(requireContext(), "Please enter both fields", Toast.LENGTH_SHORT).show()
-            } else if (username == "user" && password == "pass123") {
-                Toast.makeText(requireContext(), "Login successful!", Toast.LENGTH_SHORT).show()
+            } else if (dbHelper.checkLogin(username, password)) {
+                Toast.makeText(requireContext(), "Login successful", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.action_loginFragment_to_homePageFragment)
             } else {
-                Toast.makeText(requireContext(), "Invalid credentials", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Invalid username or password", Toast.LENGTH_SHORT).show()
             }
         }
 
         forgotPasswordText.setOnClickListener {
-            Toast.makeText(requireContext(), "Forgot Password feature coming soon!", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(requireContext(), "Forgot Password feature coming soon!", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_loginFragment_to_registerpageFragment)
         }
     }
 }
+
+
+
+//Default code - do not use
+//package com.example.prog7313pocketplanpoe
+//
+//import android.os.Bundle
+//import android.view.LayoutInflater
+//import android.view.View
+//import android.view.ViewGroup
+//import android.widget.*
+//import androidx.fragment.app.Fragment
+//import androidx.navigation.fragment.findNavController
+//import com.google.firebase.database.FirebaseDatabase
+//
+//class LoginFragment : Fragment() {
+//
+//    private lateinit var usernameField: EditText
+//    private lateinit var passwordField: EditText
+//    private lateinit var loginButton: Button
+//    private lateinit var forgotPasswordText: TextView
+//
+//
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        return inflater.inflate(R.layout.fragment_login, container, false)
+//    }
+//
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
+//        // Bind views
+//        usernameField = view.findViewById(R.id.username_txtbox)
+//        passwordField = view.findViewById(R.id.password_txtbox)
+//        loginButton = view.findViewById(R.id.loginButton)
+//        forgotPasswordText = view.findViewById(R.id.forgotPassword)
+//
+//        loginButton.setOnClickListener {
+//            val username = usernameField.text.toString().trim()
+//            val password = passwordField.text.toString().trim()
+//
+//            if (username.isEmpty() || password.isEmpty()) {
+//                Toast.makeText(requireContext(), "Please enter both fields", Toast.LENGTH_SHORT).show()
+//            } else if (username == "user" && password == "pass123") {
+//                Toast.makeText(requireContext(), "Login successful!", Toast.LENGTH_SHORT).show()
+//                findNavController().navigate(R.id.action_loginFragment_to_homePageFragment)
+//            } else {
+//                Toast.makeText(requireContext(), "Invalid credentials", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+//
+//        forgotPasswordText.setOnClickListener {
+//            Toast.makeText(requireContext(), "Forgot Password feature coming soon!", Toast.LENGTH_SHORT).show()
+//        }
+//    }
+//}

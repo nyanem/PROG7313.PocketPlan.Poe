@@ -5,11 +5,12 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/landingPageFragment">
 
+<!--    Landing page-->
     <fragment
         android:id="@+id/landingPageFragment"
         android:name="com.example.prog7313pocketplanpoe.LandingPageFragment"
         android:label="Landing Page"
-        tools:layout="@layout/fragment_landing_page">
+        tools:layout="@layout/fragment_landing_page"/>
     <action
         android:id="@+id/action_landingFragment_to_loginFragment"
         app:destination="@id/loginFragment" />
@@ -17,89 +18,166 @@
         android:id="@+id/action_landingFragment_to_registerpageFragment"
         app:destination="@id/registerFragment" />
 
-
+    <!--    Register page-->
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.prog7313pocketplanpoe.RegisterPageFragment"
         android:label="Register"/>
 
     <action
-        android:id="@+id/action_registerpageFragment_to_loginFragment"
+        android:id="@+id/action_registerFragment_to_surveyFragment"
         app:destination="@id/registerFragment" />
 
+    <!--    Survey page-->
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.prog7313pocketplanpoe.LoginFragment"
-        android:label="Login"
-        tools:layout="@layout/fragment_login">
+        android:id="@+id/surveyFragment"
+        android:name="com.example.prog7313pocketplanpoe.SurveyFragment"
+        android:label="Survey" />
     <action
-        android:id="@+id/action_loginFragment_to_homePageFragment"
-        app:destination="@id/homePageFragment" />
+        android:id="@+id/action_registerpageFragment_to_surveyFragment"
+        app:destination="@id/surveyFragment" />
+    <action
+        android:id="@+id/action_surveyFragment_to_categoryFragment"
+        app:destination="@id/categoryFragment" />
 
-    <fragment
-        android:id="@+id/homePageFragment"
-        android:name="com.example.prog7313pocketplanpoe.HomePageFragment"
-        android:label="Home Page" />
-    <fragment
-        android:id="@+id/userProfileFragment"
-        android:name="com.example.prog7313pocketplanpoe.UserProfileFragment"
-        android:label="User Profile" />
-    <fragment
-        android:id="@+id/addReceiptFragment"
-        android:name="com.example.prog7313pocketplanpoe.AddReceiptFragment"
-        android:label="Add Receipt" />
-    <fragment
-        android:id="@+id/AddTransaction"
-        android:name="com.example.prog7313pocketplanpoe.AddTransactionFragment"
-        android:label="Budget" />
+
+    <!--    Select Category page-->
     <fragment
         android:id="@+id/categoryFragment"
         android:name="com.example.prog7313pocketplanpoe.CategoryFragment"
         android:label="Category" />
+    <action
+        android:id="@+id/action_categoryFragment_to_budgetGoalsFragment"
+        app:destination="@id/budgetGoalsFragment" />
 
+
+    <!--    Budget Goals page-->
     <fragment
-        android:id="@+id/BudgetFragment"
+        android:id="@+id/budgetGoalsFragment"
         android:name="com.example.prog7313pocketplanpoe.BudgetGoalFragment"
-        android:label="Expenses" />
+        android:label="BudgetGoals"/>
+    <action
+        android:id="@+id/action_budgetGoalsFragment_to_HomePageFragment"
+        app:destination="@id/homePageFragment" />
 
+
+    <!--    Login page-->
     <fragment
-        android:id="@+id/CategoriesFragment"
-        android:name="com.example.prog7313pocketplanpoe.CategoryFragment"
-        android:label="Goals" />
+        android:id="@+id/loginFragment"
+        android:name="com.example.prog7313pocketplanpoe.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login"/>
+    <action
+        android:id="@+id/action_loginFragment_to_homePageFragment"
+        app:destination="@id/homePageFragment" />
+    <action
+        android:id="@+id/action_loginFragment_to_registerpageFragment"
+        app:destination="@id/homePageFragment" />
 
+    <!--    Home page-->
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.example.prog7313pocketplanpoe.HomePageFragment"
+        android:label="Home Page" >
+    <action
+    android:id="@+id/action_homePageFragment_to_AddTransaction"
+    app:destination="@id/AddTransaction" />
+    <action
+        android:id="@+id/action_homePageFragment_to_ReportsPageFragment"
+        app:destination="@id/reportsFragment" />
+    <action
+        android:id="@+id/action_homePageFragment_to_UserProfileFragment"
+        app:destination="@id/userProfileFragment" />
+    <action
+        android:id="@+id/action_homePageFragment_to_ViewTransactionsFragment"
+        app:destination="@id/viewTransactionsFragment" />
+    </fragment>
+
+    <!--    User Profile page-->
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.example.prog7313pocketplanpoe.UserProfileFragment"
+        android:label="User Profile" />
+    <action
+        android:id="@+id/action_userProfileFragment_to_HelpFragment"
+        app:destination="@id/helpFragment" />
+    <action
+        android:id="@+id/action_userProfileFragment_to_TipsFragment"
+        app:destination="@id/tipsFragment" />
+    <action
+        android:id="@+id/action_userProfileFragment_to_languageFragment"
+        app:destination="@id/languageFragment" />
+
+    <!--    add Receipt page-->
+    <fragment
+        android:id="@+id/addReceiptFragment"
+        android:name="com.example.prog7313pocketplanpoe.AddReceiptFragment"
+        android:label="Add Receipt" />
+
+    <!--    Add Transaction page-->
+    <fragment
+        android:id="@+id/AddTransaction"
+        android:name="com.example.prog7313pocketplanpoe.AddTransactionFragment"
+        android:label="Add Transaction" />
+    <action
+        android:id="@+id/action_addTransactionFragment_to_homePageFragment"
+        app:destination="@id/AddTransaction" />
+    <action
+        android:id="@+id/action_AddtransactionFragment_to_addReceiptFragment"
+        app:destination="@id/addReceiptFragment" />
+
+<!--    &lt;!&ndash;    Expenses page&ndash;&gt;-->
+<!--    <fragment-->
+<!--        android:id="@+id/BudgetFragment"-->
+<!--        android:name="com.example.prog7313pocketplanpoe.BudgetGoalFragment"-->
+<!--        android:label="Expenses" />-->
+
+
+
+    <!--    Help page-->
     <fragment
         android:id="@+id/helpFragment"
         android:name="com.example.prog7313pocketplanpoe.HelpPageFragment"
         android:label="Help" />
 
+    <!--    Language page-->
     <fragment
         android:id="@+id/languageFragment"
         android:name="com.example.prog7313pocketplanpoe.LanguageFragment"
         android:label="Language" />
 
+<!--        Reports page-->
     <fragment
         android:id="@+id/reportsFragment"
         android:name="com.example.prog7313pocketplanpoe.ReportsPageFragment"
         android:label="Reports" />
+    <action
+        android:id="@+id/action_viewReportsPageFragment_to_RewardsFragment"
+        app:destination="@id/rewardsFragment" />
 
+    <!--    Rewards page-->
     <fragment
         android:id="@+id/rewardsFragment"
         android:name="com.example.prog7313pocketplanpoe.RewardsFragment"
         android:label="Rewards" />
 
-    <fragment
-        android:id="@+id/surveyFragment"
-        android:name="com.example.prog7313pocketplanpoe.SurveyFragment"
-        android:label="Survey" />
 
+    <!--    Tips page-->
     <fragment
         android:id="@+id/tipsFragment"
         android:name="com.example.prog7313pocketplanpoe.TipsFragment"
         android:label="Tips" />
 
+    <!--    View Transactions page-->
     <fragment
         android:id="@+id/viewTransactionsFragment"
         android:name="com.example.prog7313pocketplanpoe.ViewTransactionsFragment"
-        android:label="Tips" />
+        android:label="View Transactions" />
+
+    <action
+        android:id="@+id/action_viewTransactionsFragment_to_homePageFragment"
+        app:destination="@id/homePageFragment" />
+
+
 
 </navigation>

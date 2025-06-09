@@ -1,14 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ReportsPageFragment">
+    android:background="#2B2C6D"
+    android:orientation="vertical"
+    android:padding="24dp">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/pp_logo"
+        android:layout_width="89dp"
+        android:layout_height="76dp"
+        android:layout_gravity="start"
+        app:srcCompat="@drawable/pp_logo" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/report_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="Total Category Spending Report"
+        android:textAlignment="center"
+        android:textColor="#AAB6E0"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+
+        <!-- Filter Dates Button -->
+
+        <Button
+            android:id="@+id/reportFilterButton"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#687CD3"
+            android:fontFamily="@font/montserrat_medium"
+            android:padding="14dp"
+            android:text="Filter Dates"
+            android:textAllCaps="false"
+            android:textColor="#DBD4D7" />
+
+        <!-- Rewards Button -->
+        <Button
+            android:id="@+id/btn_rewards"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#687CD3"
+            android:fontFamily="@font/montserrat_medium"
+            android:padding="14dp"
+            android:text="Rewards"
+            android:textAllCaps="false"
+            android:textColor="#DBD4D7" />
+
+
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="386dp"
+        android:layout_height="20dp" />
+
+    <FrameLayout
+        android:id="@+id/graphContainer"
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        android:layout_weight="1"
+        android:background="#8490C7"
+        android:radius="30dp"
+        android:padding="5dp">
+
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="339dp"
+            android:layout_height="369dp"
+            android:layout_gravity="center" />
+
+
+    </FrameLayout>
+</LinearLayout>
+
+
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="#2D336B"-->
+<!--    android:orientation="vertical"-->
+<!--    android:padding="24dp">-->
+
+<!--    &lt;!&ndash; Logo top-left &ndash;&gt;-->
+<!--    <ImageView-->
+<!--        android:id="@+id/logoImage"-->
+<!--        android:layout_width="67dp"-->
+<!--        android:layout_height="57dp"-->
+<!--        android:contentDescription="Logo"-->
+<!--        android:src="@drawable/pp_logo" />-->
+
+<!--    &lt;!&ndash; Select Time Period Text &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:id="@+id/selectTimePeriodLabel"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:text="Select Time Period"-->
+<!--        android:textColor="#FFFFFF" />-->
+
+<!--    <Space-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="20dp" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/buttonPickDateRange"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        android:text="Select Date Range" />-->
+
+
+<!--&lt;!&ndash;     Spinner &ndash;&gt;-->
+<!--&lt;!&ndash;        <Spinner&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/spinnerTimePeriod"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:backgroundTint="#A9B5DF"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:entries="@array/time_period_options"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_marginTop="8dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:layout_constraintTop_toBottomOf="@id/selectTimePeriodLabel"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:layout_constraintEnd_toEndOf="parent" />&ndash;&gt;-->
+
+<!--    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        android:id="@+id/graphContainer"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:padding="16dp">-->
+
+<!--        <com.github.mikephil.charting.charts.BarChart-->
+<!--            android:id="@+id/barChart"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
+<!--    </FrameLayout>-->
+
+
+<!--    &lt;!&ndash;    &lt;!&ndash; Bar Chart &ndash;&gt;&ndash;&gt;-->
+<!--    &lt;!&ndash;    <com.github.mikephil.charting.charts.BarChart&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:id="@+id/spendingChart"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_width="0dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_height="300dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_marginTop="16dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:background="#FFFFFF"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:layout_constraintTop_toBottomOf="@id/spinnerTimePeriod"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:layout_constraintEnd_toEndOf="parent" />&ndash;&gt;-->
+
+<!--</LinearLayout>-->
