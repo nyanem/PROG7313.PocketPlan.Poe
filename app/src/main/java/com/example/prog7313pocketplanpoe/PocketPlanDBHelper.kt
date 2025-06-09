@@ -14,7 +14,7 @@ class PocketPlanDBHelper(context: Context) :
 
     companion object {
         private const val DATABASE_NAME = "PocketPlan.db"
-        private const val DATABASE_VERSION = 5
+        private const val DATABASE_VERSION = 6
 
         // Category Table
         private const val CATEGORY_TABLE_NAME = "selected_categories"
@@ -251,6 +251,17 @@ class PocketPlanDBHelper(context: Context) :
         cursor.close()
         return balance
     }
+    fun insertTransaction(category: String, amount: Double, date: String) {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put("category", category)
+            put("amount", amount)
+            put("date", date)
+        }
+        db.insert("transactions", null, values)
+        db.close()
+    }
+
 
     fun getAllTransactions(): List<Transaction> {
         val db = readableDatabase

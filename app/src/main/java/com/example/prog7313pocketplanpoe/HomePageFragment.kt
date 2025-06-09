@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -20,6 +21,9 @@ class HomePageFragment : Fragment() {
 
     private lateinit var container: LinearLayout
     private lateinit var budgetRemainingText: TextView
+
+    private val firestore = FirebaseFirestore.getInstance()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,19 +47,14 @@ class HomePageFragment : Fragment() {
         budgetRemainingText.text = "R${"%.2f".format(maxSavingGoal)}"
 
         for (category in savedCategories) {
-            val goal = prefs.getString("${category}_goal", "0")?.toDoubleOrNull() ?: 0.0
+            val goal = prefs.getString("${category}_goal","100")?.toDoubleOrNull() ?: 0.0
             val spent = prefs.getString("${category}_spent", "0")?.toDoubleOrNull() ?: 0.0
             addCategoryCard(category, goal, spent)
         }
 
-       // val addTransactionButton = view.findViewById<FloatingActionButton>(R.id.addTransaction)
+
         val filterButton = view.findViewById<Button>(R.id.filterButton)
 
-//        addTransactionButton.setOnClickListener {
-//            // Navigate to AddTransactionFragment if implemented
-//           // Toast.makeText(requireContext(), "Transaction screen placeholder", Toast.LENGTH_SHORT).show()
-//            findNavController().navigate(R.id.action_homePageFragment_to_AddTransactionFragment)
-//        }
 
         filterButton.setOnClickListener { showDateRangePicker() }
 
@@ -100,11 +99,17 @@ class HomePageFragment : Fragment() {
 
             categoryNameView.text = categoryName
             categorySpent.text = "-R${"%.2f".format(totalAmount)}"
-            val goal = 5000.0
-            categoryGoalAmount.text = "Goal: R${"%.2f".format(goal)}"
-            val balance = goal - totalAmount
-            categoryBalance.text = "R${"%.2f".format(balance)}"
-            categoryProgress.progress = if (goal > 0) ((totalAmount / goal) * 100).toInt().coerceAtMost(100) else 0
+            firestore.collection("CategoryGoals").document(categoryName)
+                .get()
+                .addOnSuccessListener { document ->
+                    val goal = document.getDouble("goal") ?: 0.0
+                    categoryGoalAmount.text = "Goal: R${"%.2f".format(goal)}"
+                    val balance = goal - totalAmount
+                    categoryBalance.text = "R${"%.2f".format(balance)}"
+                    categoryProgress.progress = if (goal > 0) ((totalAmount / goal) * 100).toInt().coerceAtMost(100) else 0
+                }
+
+
 
             container.addView(cardView)
         }
