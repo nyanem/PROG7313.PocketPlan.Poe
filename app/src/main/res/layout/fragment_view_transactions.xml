@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2B326A"
+    android:background="#2B2C6D"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="clip_horizontal|center"
-            android:fontFamily="@font/montserrat_medium"
+            android:fontFamily="@font/montserrat_semibold"
             android:text="Current Account Balance:"
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
@@ -74,11 +74,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/filterTransactionsButton"
+            android:id="@+id/reportFilterButton"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -99,18 +99,7 @@
             android:layout_marginBottom="16dp"
             android:layout_weight="1" />
 
-        <!-- Rewards Button -->
-        <Button
-            android:id="@+id/btn_rewards"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="#8695DC"
-            android:fontFamily="@font/montserrat_medium"
-            android:padding="14dp"
-            android:text="Rewards"
-            android:textAllCaps="false"
-            android:textColor="#DBD4D7" />
+
     </LinearLayout>
 
 

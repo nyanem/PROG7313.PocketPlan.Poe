@@ -1,4 +1,4 @@
-package com.example.pocketplan
+package com.example.prog7313pocketplanpoe
 
 import android.net.Uri
 

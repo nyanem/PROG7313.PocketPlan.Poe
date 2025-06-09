@@ -21,6 +21,7 @@ class BudgetGoalFragment : Fragment() {
     private val inputMap = mutableMapOf<String, EditText>()
     private lateinit var db: FirebaseFirestore
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -74,21 +75,27 @@ class BudgetGoalFragment : Fragment() {
             goalContainer.addView(input)
         }
 
+        val goalDBHelper = BudgetGoalDBHelper(requireContext())
         val saveGoalsButton = view.findViewById<Button>(R.id.saveGoalsButton)
+
         saveGoalsButton.setOnClickListener {
             val editor = prefs.edit()
 
             for ((category, input) in inputMap) {
-                val amount = input.text.toString().trim()
-                if (amount.isNotEmpty()) {
-                    editor.putString(category, amount)
+                val amountStr = input.text.toString().trim()
+                if (amountStr.isNotEmpty()) {
+                    val amount = amountStr.toDoubleOrNull() ?: 0.0
+                    val timestamp = System.currentTimeMillis()
+
+                    editor.putString(category, amountStr)
 
                     val goalData = hashMapOf(
                         "category" to category,
-                        "goalAmount" to (amount.toDoubleOrNull() ?: 0.0),
-                        "timestamp" to System.currentTimeMillis()
+                        "goalAmount" to amount,
+                        "timestamp" to timestamp
                     )
 
+                    // Save to Firestore
                     db.collection("categoryGoals")
                         .add(goalData)
                         .addOnSuccessListener {
@@ -97,6 +104,12 @@ class BudgetGoalFragment : Fragment() {
                         .addOnFailureListener { e ->
                             Toast.makeText(requireContext(), "Failed to save $category: ${e.message}", Toast.LENGTH_SHORT).show()
                         }
+
+                    // Save to SQLite
+                    val success = goalDBHelper.insertGoal(category, amount, timestamp)
+                    if (!success) {
+                        Toast.makeText(requireContext(), "SQLite failed to save $category", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
 
@@ -107,6 +120,47 @@ class BudgetGoalFragment : Fragment() {
             // Navigate back to HomePageActivity if necessary
             findNavController().navigate(R.id.action_budgetGoalsFragment_to_HomePageFragment)
         }
+
+//        val goalDBHelper = BudgetGoalDBHelper(requireContext())
+//        val saveGoalsButton = view.findViewById<Button>(R.id.saveGoalsButton)
+//        saveGoalsButton.setOnClickListener {
+//            val editor = prefs.edit()
+//
+//            for ((category, input) in inputMap) {
+//                val amount = input.text.toString().trim()
+//                if (amount.isNotEmpty()) {
+//                    editor.putString(category, amount)
+//
+//                    val goalData = hashMapOf(
+//                        "category" to category,
+//                        "goalAmount" to (amount.toDoubleOrNull() ?: 0.0),
+//                        "timestamp" to System.currentTimeMillis()
+//                    )
+//
+//                    db.collection("categoryGoals")
+//                        .add(goalData)
+//                        .addOnSuccessListener {
+//                            // Optional success message
+//                        }
+//                        .addOnFailureListener { e ->
+//                            Toast.makeText(requireContext(), "Failed to save $category: ${e.message}", Toast.LENGTH_SHORT).show()
+//                        }
+//
+//                    // Save to SQLite
+//                    val success = goalDBHelper.insertGoal(category, amount, timestamp)
+//                    if (!success) {
+//                        Toast.makeText(requireContext(), "SQLite failed to save $category", Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//            }
+//
+//            editor.apply()
+//
+//            Toast.makeText(requireContext(), "Goals saved successfully!", Toast.LENGTH_SHORT).show()
+//
+//            // Navigate back to HomePageActivity if necessary
+//            findNavController().navigate(R.id.action_budgetGoalsFragment_to_HomePageFragment)
+//        }
 
         return view
     }

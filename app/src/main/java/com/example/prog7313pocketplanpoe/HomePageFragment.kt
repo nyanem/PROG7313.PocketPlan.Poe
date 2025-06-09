@@ -46,15 +46,22 @@ class HomePageFragment : Fragment() {
         val maxSavingGoal = dbHelper.getMaxSavingGoal()
         budgetRemainingText.text = "R${"%.2f".format(maxSavingGoal)}"
 
-        for (category in savedCategories) {
-            val goal = prefs.getString("${category}_goal","100")?.toDoubleOrNull() ?: 0.0
-            val spent = prefs.getString("${category}_spent", "0")?.toDoubleOrNull() ?: 0.0
-            addCategoryCard(category, goal, spent)
-        }
+//        for (category in savedCategories) {
+//            val goal = prefs.getString("${category}_goal","100")?.toDoubleOrNull() ?: 0.0
+//            val spent = prefs.getString("${category}_spent", "0")?.toDoubleOrNull() ?: 0.0
+//            addCategoryCard(category, goal, spent)
+//        }
 
 
         val filterButton = view.findViewById<Button>(R.id.filterButton)
 
+        val goalDBHelper = BudgetGoalDBHelper(requireContext())
+
+        for (category in savedCategories) {
+            val goal = goalDBHelper.getGoalForCategory(category) ?: 0.0
+            val spent = prefs.getString("${category}_spent", "0")?.toDoubleOrNull() ?: 0.0
+            addCategoryCard(category, goal, spent)
+        }
 
         filterButton.setOnClickListener { showDateRangePicker() }
 
@@ -97,22 +104,44 @@ class HomePageFragment : Fragment() {
             val categoryProgress = cardView.findViewById<ProgressBar>(R.id.categoryProgress)
             val categoryGoalAmount = cardView.findViewById<TextView>(R.id.categoryGoalAmount)
 
+            val goal = BudgetGoalDBHelper(requireContext()).getGoalForCategory(categoryName) ?: 0.0
+            val balance = goal - totalAmount
+            val progress = if (goal > 0) ((totalAmount / goal) * 100).toInt().coerceAtMost(100) else 0
+
             categoryNameView.text = categoryName
             categorySpent.text = "-R${"%.2f".format(totalAmount)}"
-            firestore.collection("CategoryGoals").document(categoryName)
-                .get()
-                .addOnSuccessListener { document ->
-                    val goal = document.getDouble("goal") ?: 0.0
-                    categoryGoalAmount.text = "Goal: R${"%.2f".format(goal)}"
-                    val balance = goal - totalAmount
-                    categoryBalance.text = "R${"%.2f".format(balance)}"
-                    categoryProgress.progress = if (goal > 0) ((totalAmount / goal) * 100).toInt().coerceAtMost(100) else 0
-                }
-
-
+            categoryGoalAmount.text = "Goal: R${"%.2f".format(goal)}"
+            categoryBalance.text = "R${"%.2f".format(balance)}"
+            categoryProgress.progress = progress
 
             container.addView(cardView)
         }
+
+//        for ((categoryName, totalAmount) in filteredTotals) {
+//            val cardView = LayoutInflater.from(requireContext()).inflate(R.layout.catergory_card, container, false)
+//
+//            val categoryNameView = cardView.findViewById<TextView>(R.id.categoryName)
+//            val categorySpent = cardView.findViewById<TextView>(R.id.categorySpent)
+//            val categoryBalance = cardView.findViewById<TextView>(R.id.balance)
+//            val categoryProgress = cardView.findViewById<ProgressBar>(R.id.categoryProgress)
+//            val categoryGoalAmount = cardView.findViewById<TextView>(R.id.categoryGoalAmount)
+//
+//            categoryNameView.text = categoryName
+//            categorySpent.text = "-R${"%.2f".format(totalAmount)}"
+//            firestore.collection("CategoryGoals").document(categoryName)
+//                .get()
+//                .addOnSuccessListener { document ->
+//                    val goal = document.getDouble("goal") ?: 0.0
+//                    categoryGoalAmount.text = "Goal: R${"%.2f".format(goal)}"
+//                    val balance = goal - totalAmount
+//                    categoryBalance.text = "R${"%.2f".format(balance)}"
+//                    categoryProgress.progress = if (goal > 0) ((totalAmount / goal) * 100).toInt().coerceAtMost(100) else 0
+//                }
+//
+//
+//
+//            container.addView(cardView)
+//        }
     }
 
     private fun addCategoryCard(categoryName: String, totalBudget: Double, amountSpent: Double) {

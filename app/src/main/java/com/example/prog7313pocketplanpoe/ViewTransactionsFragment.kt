@@ -2,16 +2,12 @@ package com.example.prog7313pocketplanpoe
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.prog7313pocketplanpoe.CurrencyManager.formatCurrency
@@ -22,7 +18,7 @@ class ViewTransactionsFragment : Fragment() {
 
     private lateinit var transactionList: RecyclerView
     private lateinit var balanceText: TextView
-    private lateinit var rewardsButton: Button
+   // private lateinit var rewardsButton: Button
     private lateinit var dbHelper: TransactionDBHelper
     private lateinit var adapter: TransactionAdapter
 
@@ -41,7 +37,7 @@ class ViewTransactionsFragment : Fragment() {
         // Initialize views
         balanceText = view.findViewById(R.id.balanceTextView)
         transactionList = view.findViewById(R.id.transactionRecyclerView)
-        rewardsButton = view.findViewById(R.id.btn_rewards)
+//        rewardsButton = view.findViewById(R.id.btn_rewards)
         transactionList = view.findViewById(R.id.transactionRecyclerView)
         transactionList.layoutManager = LinearLayoutManager(requireContext())
 
@@ -49,7 +45,7 @@ class ViewTransactionsFragment : Fragment() {
         // Set up RecyclerView
         transactionList.layoutManager = LinearLayoutManager(requireContext())
 
-        val filterButton: Button = view.findViewById(R.id.filterTransactionsButton)
+        val filterButton: Button = view.findViewById(R.id.reportFilterButton)
         filterButton.setOnClickListener {
             showDateRangeTransactionFilter()
         }
@@ -57,11 +53,6 @@ class ViewTransactionsFragment : Fragment() {
 
         // Load and display transactions
         loadTransactions()
-
-        // Rewards button navigation
-        rewardsButton.setOnClickListener {
-            findNavController().navigate(R.id.action_viewTransactionsFragment_to_RewardsFragment)
-        }
 
         return view
     }

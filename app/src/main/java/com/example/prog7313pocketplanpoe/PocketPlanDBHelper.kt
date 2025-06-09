@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.net.Uri
 import android.widget.ImageView
-import com.example.pocketplan.Transaction
+import com.example.prog7313pocketplanpoe.Transaction
 
 
 class PocketPlanDBHelper(context: Context) :
@@ -14,7 +14,7 @@ class PocketPlanDBHelper(context: Context) :
 
     companion object {
         private const val DATABASE_NAME = "PocketPlan.db"
-        private const val DATABASE_VERSION = 6
+        private const val DATABASE_VERSION = 8
 
         // Category Table
         private const val CATEGORY_TABLE_NAME = "selected_categories"
@@ -184,6 +184,27 @@ class PocketPlanDBHelper(context: Context) :
         return db.insert(SURVEY_TABLE_NAME, null, values) != -1L
     }
 
+    fun getMonthlyGoalRange(): Pair<Float, Float> {
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT $SURVEY_COLUMN_MIN_SAVING, $SURVEY_COLUMN_MAX_SAVING FROM $SURVEY_TABLE_NAME LIMIT 1", null)
+
+        var minGoal = 1200f
+        var maxGoal = 1500f
+
+
+        cursor.use {
+            if (it.moveToFirst()) {
+                minGoal = 1200f
+                maxGoal = 15500f
+                //minGoal = it.getFloat(it.getColumnIndexOrThrow(SURVEY_COLUMN_MIN_SAVING))
+                //maxGoal = it.getFloat(it.getColumnIndexOrThrow(SURVEY_COLUMN_MAX_SAVING))
+            }
+        }
+
+        return Pair(minGoal, maxGoal)
+    }
+
+
     fun getLatestSurveyData(): Triple<Double, Double, Double>? {
         val db = readableDatabase
         val cursor = db.rawQuery("SELECT $SURVEY_COLUMN_INCOME, $SURVEY_COLUMN_MAX_SAVING, $SURVEY_COLUMN_MIN_SAVING FROM $SURVEY_TABLE_NAME ORDER BY $SURVEY_COLUMN_ID DESC LIMIT 1", null)
@@ -238,11 +259,15 @@ class PocketPlanDBHelper(context: Context) :
         return db.insert(TABLE_TRANSACTIONS, null, values)
     }
 
-    private fun insertImage(imageUri: Uri) {
-        // Example logic: display image in an ImageView
-        //val imageView = view?.findViewById<ImageView>(R.id.receiptImageView)
-        //imageView?.setImageURI(imageUri)
-    }
+//    fun insertImage(imageBytes: ByteArray): Long {
+//        val db = this.writableDatabase
+//        val values = ContentValues().apply {
+//            put("image", imageBytes)
+//        }
+//        val id = db.insert(TABLE_RECEIPTS, null, values)
+//        db.close()
+//        return id
+//    }
 
     fun getBalance(): Double {
         val db = readableDatabase

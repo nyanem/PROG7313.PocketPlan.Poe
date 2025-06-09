@@ -98,6 +98,15 @@
         android:id="@+id/userProfileFragment"
         android:name="com.example.prog7313pocketplanpoe.UserProfileFragment"
         android:label="User Profile" />
+    <action
+        android:id="@+id/action_userProfileFragment_to_HelpFragment"
+        app:destination="@id/helpFragment" />
+    <action
+        android:id="@+id/action_userProfileFragment_to_TipsFragment"
+        app:destination="@id/tipsFragment" />
+    <action
+        android:id="@+id/action_userProfileFragment_to_languageFragment"
+        app:destination="@id/languageFragment" />
 
     <!--    add Receipt page-->
     <fragment
@@ -142,6 +151,9 @@
         android:id="@+id/reportsFragment"
         android:name="com.example.prog7313pocketplanpoe.ReportsPageFragment"
         android:label="Reports" />
+    <action
+        android:id="@+id/action_viewReportsPageFragment_to_RewardsFragment"
+        app:destination="@id/rewardsFragment" />
 
     <!--    Rewards page-->
     <fragment
@@ -161,9 +173,7 @@
         android:id="@+id/viewTransactionsFragment"
         android:name="com.example.prog7313pocketplanpoe.ViewTransactionsFragment"
         android:label="View Transactions" />
-    <action
-        android:id="@+id/action_viewTransactionsFragment_to_RewardsFragment"
-        app:destination="@id/rewardsFragment" />
+
     <action
         android:id="@+id/action_viewTransactionsFragment_to_homePageFragment"
         app:destination="@id/homePageFragment" />

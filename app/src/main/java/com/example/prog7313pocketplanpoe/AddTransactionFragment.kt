@@ -59,7 +59,7 @@ class AddTransactionFragment : Fragment() {
 
 
 
-        balanceEditText.setText("R1200.00")
+        balanceEditText.setText("R24000.00")
 
         return view
     }
@@ -102,7 +102,7 @@ class AddTransactionFragment : Fragment() {
     }
 
     private fun saveTransactions(amount: String, category: String, date: String) {
-        val dbHelper = PocketPlanDBHelper(requireContext())
+        val dbHelper = TransactionDBHelper(requireContext())
         dbHelper.insertTransaction(category, amount.toDouble(), date)
 
         val db = FirebaseFirestore.getInstance()

@@ -11,8 +11,8 @@ import java.sql.Blob
 class TransactionDBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
-        private const val DATABASE_VERSION = 6
-        private const val DATABASE_NAME = "PocketPlan.db"
+        private const val DATABASE_VERSION = 8
+        private const val DATABASE_NAME = "Transactions.db"
 
         // Table names
         private const val TABLE_TRANSACTIONS = "transactions"
@@ -167,7 +167,16 @@ class TransactionDBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
     }
 
 
-
+    fun insertTransaction(category: String, amount: Double, date: String) {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put("category", category)
+            put("amount", amount)
+            put("date", date)
+        }
+        db.insert("transactions", null, values)
+        db.close()
+    }
     // Add receipt and return its ID
     fun addReceipt(uri: String): Long {
         val db = this.writableDatabase
