@@ -1,14 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ReportsPageFragment">
+    android:background="#2D336B"
+    android:orientation="vertical"
+    android:padding="24dp">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- Logo top-left -->
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="67dp"
+        android:layout_height="57dp"
+        android:contentDescription="Logo"
+        android:src="@drawable/pp_logo" />
+
+    <!-- Select Time Period Text -->
     <TextView
+        android:id="@+id/selectTimePeriodLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Select Time Period"
+        android:textColor="#FFFFFF" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <Button
+        android:id="@+id/buttonPickDateRange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:text="Select Date Range" />
+
+
+<!--     Spinner -->
+<!--        <Spinner-->
+<!--            android:id="@+id/spinnerTimePeriod"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:backgroundTint="#A9B5DF"-->
+<!--            android:entries="@array/time_period_options"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/selectTimePeriodLabel"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent" />-->
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/graphContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:padding="16dp">
 
-</FrameLayout>
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+
+    <!--    &lt;!&ndash; Bar Chart &ndash;&gt;-->
+    <!--    <com.github.mikephil.charting.charts.BarChart-->
+    <!--        android:id="@+id/spendingChart"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="300dp"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:background="#FFFFFF"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/spinnerTimePeriod"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent" />-->
+
+</LinearLayout>

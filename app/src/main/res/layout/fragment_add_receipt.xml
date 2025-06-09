@@ -10,9 +10,6 @@
     tools:context=".AddReceiptFragment">
 
     <!-- Top Bar -->
-
-    <!-- Profile Image and Name -->
-
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="0dp"
@@ -22,7 +19,6 @@
         android:orientation="horizontal"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -38,19 +34,18 @@
             android:layout_height="1dp"
             android:layout_weight="1" />
 
-
     </LinearLayout>
-    <!-- Upload a picture! -->
 
+    <!-- Camera Preview & Buttons -->
     <LinearLayout
         android:id="@+id/cameraLayout"
-        android:layout_width="414dp"
-        android:layout_height="370dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:gravity="center"
         android:orientation="vertical"
+        android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topBar">
 
@@ -59,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:backgroundTint="#A9B5DF"
+            android:backgroundTint="#8695DC"
             android:fontFamily="@font/montserrat"
             android:text="Take Photo"
             android:textColor="#FFFFFF" />
@@ -68,26 +63,30 @@
             android:id="@+id/imageViewReceipt"
             android:layout_width="200dp"
             android:layout_height="200dp"
+            android:layout_marginBottom="12dp"
             android:background="@drawable/round_button"
             android:contentDescription="Receipt Preview"
-            android:padding="8dp"
             android:scaleType="centerCrop" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="25dp" />
+        <ProgressBar
+            android:id="@+id/uploadProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/uploadButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/round_button"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#8695DC"
             android:fontFamily="@font/montserrat"
             android:text="Upload Receipt"
             android:textColor="#FFFFFF" />
     </LinearLayout>
 
+
+    <!-- Bottom Nav -->
     <LinearLayout
         android:id="@+id/bottomButtons"
         android:layout_width="0dp"
@@ -111,18 +110,136 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/logoutButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#A9B5DF"
-            android:text="Log Out"
-            android:textColor="#000000"
-            android:fontFamily="@font/montserrat"
-            android:background="@drawable/round_button"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.constraintlayout.widget.ConstraintLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/main"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="#2D336B"-->
+<!--    tools:context=".AddReceiptFragment">-->
+
+<!--    &lt;!&ndash; Top Bar &ndash;&gt;-->
+
+<!--    &lt;!&ndash; Profile Image and Name &ndash;&gt;-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/topBar"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="28dp"-->
+<!--        android:background="#2D336B"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:padding="16dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/logo"-->
+<!--            android:layout_width="67dp"-->
+<!--            android:layout_height="71dp"-->
+<!--            android:contentDescription="Logo"-->
+<!--            android:src="@drawable/pp_logo" />-->
+
+<!--        <View-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:layout_weight="1" />-->
+
+
+<!--    </LinearLayout>-->
+<!--    &lt;!&ndash; Upload a picture! &ndash;&gt;-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/cameraLayout"-->
+<!--        android:layout_width="414dp"-->
+<!--        android:layout_height="370dp"-->
+<!--        android:layout_marginTop="80dp"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/topBar">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btnOpenCamera"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="12dp"-->
+<!--            android:backgroundTint="#8695DC"-->
+<!--            android:fontFamily="@font/montserrat"-->
+<!--            android:text="Take Photo"-->
+<!--            android:textColor="#FFFFFF" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/imageViewReceipt"-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="200dp"-->
+<!--            android:background="@drawable/round_button"-->
+<!--            android:contentDescription="Receipt Preview"-->
+<!--            android:padding="8dp"-->
+<!--            android:scaleType="centerCrop" />-->
+
+<!--        <Space-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="25dp" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/uploadButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:backgroundTint="#8695DC"-->
+<!--            android:fontFamily="@font/montserrat"-->
+<!--            android:text="Upload Receipt"-->
+<!--            android:textColor="#FFFFFF" />-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/bottomButtons"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:padding="24dp"-->
+<!--        android:gravity="center_vertical"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent">-->
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/backButton"-->
+<!--            android:layout_width="48dp"-->
+<!--            android:layout_height="48dp"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:src="?attr/homeAsUpIndicator"-->
+<!--            app:tint="#FAF9F9" />-->
+
+<!--        <View-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:layout_weight="1" />-->
+
+<!--&lt;!&ndash;        <Button&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/logoutButton"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:backgroundTint="#A9B5DF"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:text="Log Out"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:textColor="#000000"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:fontFamily="@font/montserrat"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:background="@drawable/round_button"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:paddingLeft="24dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:paddingRight="24dp" />&ndash;&gt;-->
+<!--    </LinearLayout>-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
